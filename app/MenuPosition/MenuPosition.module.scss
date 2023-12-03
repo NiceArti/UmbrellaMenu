@@ -1,0 +1,59 @@
+.menu-position {
+    width: 100%;
+    height: fit-content;
+    padding: 30px 20px;
+
+    .__header {
+        color: #FF0000;
+        letter-spacing: 3px;
+        font-weight: 700;
+        position: relative;
+        font-size: 2rem;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .__header-one {
+        line-height: 2rem;
+        color: #FF0000;
+        letter-spacing: 3px;
+        font-weight: 700;
+        font-size: 2rem;
+    }
+
+    .price-text {
+        text-align: right;
+        border-left: 2px solid #FF0000;
+        width: 60px;
+        padding: 0 10px;
+    }
+
+    .__group {
+        font-size: 1.2rem;
+        font-weight: 600;
+
+        .__row {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .__super-row {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            .__super-col {
+                display: flex;
+
+                .price-text {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+    
+}

@@ -1,0 +1,17 @@
+.layout{
+    position: absolute;
+    width: 393px;
+    min-width: 350px;
+}
+
+.bg-img-1 {
+    z-index: -1;
+    position: absolute;
+    top: 493px;
+}
+
+.bg-img-2 {
+    z-index: -1;
+    position: absolute;
+    bottom: 0;
+}
