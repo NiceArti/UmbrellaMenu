@@ -8,3 +8,7 @@ body {
   color: #fff;
   background: #000;
 }
+
+#coffeTag {
+  padding-top: 0 !important;
+}
