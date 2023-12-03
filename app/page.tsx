@@ -191,7 +191,6 @@ export default function Home() {
         <MenuPositionsWithOnePrice tag='beerTag' header='Пиво' positions={[
             "Белый кролик",
             "Два Бобра",
-            "Груша-дыня",
             "Червонный валет",
           ]}
 
