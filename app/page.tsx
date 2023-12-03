@@ -11,7 +11,7 @@ import stoneImg from './img/stone-bg.png';
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-      <div className={`${styles['layout']}`}>
+      <div className={styles.layout}>
         <Header />
         <Hookah />
         <MenuPosition tag='coffeTag' header='Кофе' positions={[

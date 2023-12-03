@@ -1,3 +1,4 @@
+"use client"
 import Image from 'next/image';
 import styles from './Footer.module.scss';
 import locationImg from '@/app/img/location.png';
@@ -10,12 +11,17 @@ export default function Footer() {
     return (
         <div className={styles["footer"]}>
             <div className={styles["__header"]}>
-                <a href="#upTag" className={styles["__row"]}>
+                <div onClick={() => {
+                    const el = document.getElementById("upTag");
+                    if (el) {
+                        el.scrollIntoView({behavior: 'smooth'});
+                    }
+                }} className={`${styles["__row"]} cursor-pointer`}>
                     <div className={styles["__item"]}>
                         <Image src={arrowUpImg} alt="location"/>
                     </div>
                     <h3>Наверх</h3>
-                </a>
+                </div>
             </div>
             <div className={styles["__socials"]}>
                 <div className={styles["__row"]}>
