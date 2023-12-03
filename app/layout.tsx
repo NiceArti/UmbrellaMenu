@@ -1,8 +1,13 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
+import type { Metadata } from 'next';
+import { Advent_Pro } from 'next/font/google';
+import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] })
+
+// Subsets are really important. CHECK BELOW FOR MORE INFO
+const adventPro = Advent_Pro({ 
+  subsets: ['latin'],
+  style: 'normal',
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${adventPro.className}`}>{children}</body>
     </html>
   )
 }
