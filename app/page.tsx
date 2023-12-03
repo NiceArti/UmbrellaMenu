@@ -6,7 +6,7 @@ import styles from './Layout.module.scss';
 import MenuPosition from './MenuPosition/MenuPosition';
 import MenuPositionsByHeader from './MenuPosition/MenuPositionsByHeader';
 import MenuPositionsWithOnePrice from './MenuPosition/MenuPositionsWithOnePrice';
-import stoneImg from './img/stone-bg.jpg';
+import stoneImg from './img/stone-bg.png';
 
 export default function Home() {
   return (
