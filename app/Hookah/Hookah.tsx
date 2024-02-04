@@ -28,7 +28,7 @@ export default function Hookah() {
 
                     <div className={styles["__col"]}>
                         <div className={`${styles["__price-list"]} ${styles["h-50"]}`}>
-                            <h3 className={styles["__humans-amount"]}>1300</h3>
+                            <h3 className={styles["__humans-amount"]}>1400</h3>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@ export default function Hookah() {
 
                     <div className={styles["__col"]}>
                         <div className={styles["__price-list"]}>
-                            <h3 className={styles["__humans-amount"]}>2300</h3>
+                            <h3 className={styles["__humans-amount"]}>2500</h3>
                         </div>
                     </div>
                 </div>

@@ -61,6 +61,12 @@ export default function Header() {
                     }}>Пиво
                     </button>
                 </div>
+                <div className={styles["__row"]}>
+                    <button className={`${styles["btn"]} ${styles["__item"]}`} onClick={() => {
+                        scrollToId("coldDrinksTag")
+                    }}>Холодные напитки
+                    </button>
+                </div>
             </div>
         </div>
     )

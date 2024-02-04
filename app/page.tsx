@@ -131,9 +131,7 @@ export default function Home() {
             "Английский завтрак",
             "Эрл Грей",
             "Липовый мёд",
-            "Манго – Маракуйя",
             "Яблоко – Корица",
-            "Ноктюрн",
             "Чабрец",
             "Земляничный десерт",
           ]}
@@ -143,13 +141,10 @@ export default function Home() {
 
 
         <MenuPositionsWithOnePrice tag='' header='Чай зелёный' positions={[
-            "Японская липа",
-            "Лимонный крем с женьшенем",
             "Свежая ромашка",
             "Сенча",
             "Сокровище Японии",
             "Романтика",
-            "Сладкая груша",
           ]}
 
           pricing={350}
@@ -164,6 +159,24 @@ export default function Home() {
 
           pricing={350}
         />
+
+        <MenuPosition tag='coldDrinksTag' header='Холодные напитки' positions={[
+            "Вода Байкал газ, б/г",
+            "Кола «Добрый»",
+            "«Добрый» манго маракуйя",
+            "«Добрый» апельсин",
+            "Сок Rich вишня, яблоко",
+          ]}
+
+          pricing={[
+            170,
+            170,
+            170,
+            170,
+            380,
+          ]}
+        />
+
         <MenuPositionsWithOnePrice tag='milkshakeTag' header='Милкшейки' positions={[
             "Oreo",
             "Банановый",
