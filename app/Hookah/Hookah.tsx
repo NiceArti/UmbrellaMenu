@@ -1,21 +1,20 @@
 import Image from 'next/image';
 import styles from './Hookah.module.scss';
-import unionImg from '../img/union.png';
-import hookahImg from '../img/noun-hookah.png';
+import { UnionAsset, HookahAsset } from '@/shared/images';
+import { Title } from '@/shared/ui';
 
 
 export default function Hookah() {
     return (
         <div className={styles["hookah-component"]}>
-            <div className={styles["__header"]}>
-                <h2>Кальяны</h2>
-            </div>
+            <Title title='Кальяны'/>
+
             <div className={styles["__about"]}>
                 <div className={styles["__row"]}>
                     <div className={`${styles["__col"]} ${styles["w-150"]}`}>
-                        <Image src={unionImg} alt='human'/>
-                        <Image src={unionImg} alt='human'/>
-                        <Image src={unionImg} alt='human'/>
+                        <Image src={UnionAsset} alt='human'/>
+                        <Image src={UnionAsset} alt='human'/>
+                        <Image src={UnionAsset} alt='human'/>
                     </div>
                     
                     <div className={`${styles["__col"]} ${styles["w-50"]}`}>
@@ -23,7 +22,7 @@ export default function Hookah() {
                     </div>
 
                     <div className={`${styles["__col"]} ${styles["w-80"]}`}>
-                        <Image src={hookahImg} alt='hookan'/>
+                        <Image src={HookahAsset} alt='hookan'/>
                     </div>
 
                     <div className={styles["__col"]}>
@@ -34,20 +33,20 @@ export default function Hookah() {
                 </div>
                 <div className={styles["__row"]}>
                     <div className={`${styles["__col"]} ${styles["w-150"]}`}>
-                            <Image src={unionImg} alt='human' height={36}/>
-                            <Image src={unionImg} alt='human' height={36}/>
-                            <Image src={unionImg} alt='human' height={36}/>
-                            <Image src={unionImg} alt='human' height={36}/>
-                            <Image src={unionImg} alt='human' height={36}/>
-                            <Image src={unionImg} alt='human' height={36}/>
+                            <Image src={UnionAsset} alt='human' height={36}/>
+                            <Image src={UnionAsset} alt='human' height={36}/>
+                            <Image src={UnionAsset} alt='human' height={36}/>
+                            <Image src={UnionAsset} alt='human' height={36}/>
+                            <Image src={UnionAsset} alt='human' height={36}/>
+                            <Image src={UnionAsset} alt='human' height={36}/>
                     </div>
                     <div className={`${styles["__col"]} ${styles["w-50"]}`}>
                         <h3 className={styles["__humans-amount"]}>4-6 <br/> чел.</h3>
                     </div>
 
                     <div className={`${styles["__col"]} ${styles["w-80"]}`}>
-                        <Image src={hookahImg} alt='hookan'/>
-                        <Image src={hookahImg} alt='hookan'/>
+                        <Image src={HookahAsset} alt='hookan'/>
+                        <Image src={HookahAsset} alt='hookan'/>
                     </div>
 
                     <div className={styles["__col"]}>

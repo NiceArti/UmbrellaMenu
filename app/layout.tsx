@@ -21,7 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${adventPro.className}`}>{children}</body>
+      <body className={adventPro.className}>
+        {children}
+      </body>
     </html>
   )
 }

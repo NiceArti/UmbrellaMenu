@@ -1,8 +1,7 @@
 .hookah-component {
     width: 100%;
-    height: 400px;
-    margin-top: 150px;
-    padding: 30px 20px 0px 20px;
+    height: fit-content;
+    padding: 0 32px 0px 32px;
 
 
     .__header {
@@ -53,20 +52,4 @@
         font-size: 13px;
         letter-spacing: 1px;
     }
-}
-
-.w-150 {
-    width: 120px;
-}
-
-.h-50 {
-    height: 70px;
-}
-
-.w-50 {
-    width: 35px;
-}
-
-.w-80 {
-    width: 80px;
 }
