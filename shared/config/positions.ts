@@ -61,6 +61,20 @@ export const glintwein: PositionsType = {
     ]
 }
 
+export const mangoshake: PositionsType = {
+    title: "Манго шейк",
+    prices: [
+        "450",
+    ]
+}
+
+export const laysStax: PositionsType = {
+    title: "Lays STAX",
+    prices: [
+        "350",
+    ]
+}
+
 export const additivesForTeaAndCoffee: PositionsType = {
     title: "Добавки к чаю и кофе",
     names: [
@@ -84,8 +98,10 @@ export const lemonades: PositionsType = {
     tag: "lemonade",
     title: "Лимонады",
     names: [
-        "Малина - базилик",
+        "Лайм - мята",
         "Манго - маракуйя",
+        "Малина - базилик",
+        "Груша - Бергамот",
     ],
     prices: [
         "350"
@@ -143,11 +159,14 @@ export const blackTeas: PositionsType = {
     title: "Чай чёрный",
     names: [
         "Английский завтрак",
-        "Эрл Грей",
-        "Липовый мёд",
-        "Яблоко – Корица",
         "Чабрец",
-        "Земляничный десерт",
+        "Эрл Грей",
+        "Яблоко – Корица",
+        "Липовый мёд",
+        "Манго - маракуйя",
+        "Экзотические фрукты",
+        "Айва с персиком",
+        "Красные ягоды",
     ],
     prices: [
         "350",
@@ -157,10 +176,13 @@ export const blackTeas: PositionsType = {
 export const greenTeas: PositionsType = {
     title: "Чай зелёный",
     names: [
+        "Папайя ананас",
+        "Сладкая груша",
         "Свежая ромашка",
-        "Сенча",
-        "Сокровище Японии",
+        "С имбирём и малиной",
+        "Японская липа",
         "Романтика",
+        "Сенча",
     ],
     prices: [
         "350",
@@ -188,6 +210,7 @@ export const coldDrinks: PositionsType = {
         "«Добрый» Кола",
         "«Добрый» манго-маракуйя",
         "«Добрый» апельсин",
+        "Red Bull",
         "Сок Rich вишня, яблоко",
     ],
     prices: [
@@ -195,9 +218,12 @@ export const coldDrinks: PositionsType = {
         "170",
         "170",
         "170",
+        "250",
         "380",
     ]
 }
+
+
 
 export const milkshakes: PositionsType = {
     tag: "milkshake",
@@ -225,7 +251,7 @@ export const snacks: PositionsType = {
     prices: [
         "100",
         "100",
-        "300",
+        "350",
     ]
 }
 

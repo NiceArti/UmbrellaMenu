@@ -5,7 +5,7 @@ import { Footer } from '@/widgets/footer';
 
 import { PageLayout } from '@/shared/ui/page-layout';
 import { MenuPositions } from '@/widgets/menu-positions';
-import { additivesForTeaAndCoffee, beer, blackTeas, chineseTeas, coffee, coldDrinks, glintwein, greenTeas, hotTeas, lemonades, matchaLatte, milkshakes, ratte, snacks, teaDrinks } from '@/shared/config/positions';
+import { additivesForTeaAndCoffee, beer, blackTeas, chineseTeas, coffee, coldDrinks, glintwein, greenTeas, hotTeas, laysStax, lemonades, mangoshake, matchaLatte, milkshakes, ratte, snacks, teaDrinks } from '@/shared/config/positions';
 
 export function HomePage() {
     return (
@@ -22,13 +22,13 @@ export function HomePage() {
                     additivesForTeaAndCoffee,
                     lemonades,
                     chineseTeas,
-                    hotTeas,
                     blackTeas,
                     greenTeas,
-                    teaDrinks,
                     coldDrinks,
                     milkshakes,
+                    mangoshake,
                     snacks,
+                    laysStax,
                     beer,
                 ].map((position, index) => 
                     <MenuPositions
