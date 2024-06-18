@@ -68,12 +68,6 @@ export const mangoshake: PositionsType = {
     ]
 }
 
-export const laysStax: PositionsType = {
-    title: "Lays STAX",
-    prices: [
-        "350",
-    ]
-}
 
 export const additivesForTeaAndCoffee: PositionsType = {
     title: "Добавки к чаю и кофе",
@@ -101,7 +95,7 @@ export const lemonades: PositionsType = {
         "Лайм - мята",
         "Манго - маракуйя",
         "Малина - базилик",
-        "Груша - Бергамот",
+        "Груша - бергамот",
     ],
     prices: [
         "350"
@@ -113,26 +107,24 @@ export const chineseTeas: PositionsType = {
     tag: "tea",
     title: "Китайский чай",
     names: [
-        "Те Гуанинь",
-        "ГАБА",
+        "Улун апельсиновый",
+        "Улун молочный",
+        "Жасминовый",
+        "Габа",
         "Да Хун Пао",
-        "Шу Пуэр",
-        "Шен Пуэр",
-        "Улун Дыня",
-        "Хуа ЧжуЧа (жасмин)",
-        "Бай Му Дань (Белый пион)",
-        "Молочный улун",
+        "Шу пуэр",
+        "Шен пуэр",
+        "Те Гуанинь",
     ],
     prices: [
-        "550",
+        "500",
+        "500",
+        "500",
         "700",
-        "450",
-        "500",
-        "450",
-        "400",
-        "400",
-        "450",
-        "500",
+        "550",
+        "550",
+        "550",
+        "600",
     ]
 }
 
@@ -183,6 +175,7 @@ export const greenTeas: PositionsType = {
         "Японская липа",
         "Романтика",
         "Сенча",
+        "Сокровище Японии",
     ],
     prices: [
         "350",
