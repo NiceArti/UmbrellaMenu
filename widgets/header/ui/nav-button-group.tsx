@@ -11,7 +11,7 @@ export function NavButtonGroup(props?: Props) {
                         key={index}
                         tag={item.tag}
                         value={item.text}
-                        className="grow h-16 [text-shadow:_1px_1px_1px_rgb(0_0_0_/_25%)] text-primary-foreground bg-primary text-xl w-1/4 rounded-none" 
+                        className="grow h-16 [text-shadow:_1px_1px_1px_rgb(0_0_0_/_25%)] text-primary-foreground bg-primary text-xl w-1/4 rounded-none focus-visible:bg-red-950" 
                     />
                 )
             :
