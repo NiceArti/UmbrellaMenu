@@ -1,5 +1,5 @@
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 export const hapticsImpactMedium = async () => {
-    await Haptics.impact({ style: ImpactStyle.Medium });
+    await Haptics.impact({ style: ImpactStyle.Heavy });
 };
