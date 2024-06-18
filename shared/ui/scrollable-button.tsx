@@ -7,7 +7,7 @@ import { Button } from "./button";
 export function ScrollableButton({value, tag, className}:{value?: string, tag?: Tag, className?: string}) {
     return (
         <Button
-            onTouchStart={async () => await hapticsImpactMedium()}
+            onTouchStart={async () => navigator.vibrate(200)}
             onClick={() => scrollToId(tag)}
             className={className} 
         >
