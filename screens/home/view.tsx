@@ -3,7 +3,7 @@ import Hookah from '../../app/Hookah/Hookah';
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
 
-import { PageLayout } from '@/shared/ui/page-layout';
+import { PageLayout } from '@/shared/ui';
 import { MenuPositions } from '@/widgets/menu-positions';
 import { additivesForTeaAndCoffee, beer, blackTeas, chineseTeas, coffee, coldDrinks, glintwein, greenTeas, hotTeas, laysStax, lemonades, mangoshake, matchaLatte, milkshakes, ratte, snacks, teaDrinks } from '@/shared/config/positions';
 

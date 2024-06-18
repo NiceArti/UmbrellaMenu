@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowAsset, InstagramAsset, LocationAsset, PhoneAsset } from "@/shared/images";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/shared/ui";
 import Image from "next/image";
 import { Anchor } from "./ui";
 import { scrollToId } from "@/shared/utils";
@@ -12,9 +12,9 @@ export function Footer() {
         <div className="flex flex-col gap-12 w-full outline-none">
             <div className="px-8">
                 <Button 
-                onTouchStart={() => scrollToId("coffee")}
-                onClick={() => scrollToId("coffee")}
-                className="inline-flex gap-6 items-baseline text-xl w-fit h-fit bg-transparent hover:bg-transparent p-0 tracking-widest">
+                    onClick={() => scrollToId("coffee")}
+                    className="inline-flex gap-6 items-baseline text-xl w-fit h-fit bg-transparent hover:bg-transparent p-0 tracking-widest"
+                >
                     <Image 
                         src={ArrowAsset.src}
                         width={ArrowAsset.width}
