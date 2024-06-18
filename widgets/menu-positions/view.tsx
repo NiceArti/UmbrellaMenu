@@ -11,7 +11,7 @@ export function MenuPositions({title, names, prices, tag}:{title?: string, names
                     <div className="inline-flex justify-between">
                         {names && names.length ?
                             <Position 
-                                className="grow"
+                                className="grow max-w-[304px]"
                                 names={names}
                             />
                             :
@@ -20,7 +20,7 @@ export function MenuPositions({title, names, prices, tag}:{title?: string, names
 
                         {prices && prices.length ?
                             <Position 
-                                className="border-l-2 border-primary w-24 justify-center items-center"
+                                className="border-l-2 border-primary max-w-20 w-20 justify-center items-end"
                                 names={prices}
                             />
                             :
@@ -34,7 +34,7 @@ export function MenuPositions({title, names, prices, tag}:{title?: string, names
 
                 {prices && prices.length ?
                     <Position 
-                        className="border-l-2 border-primary w-24 justify-center items-center"
+                        className="border-l-2 border-primary w-20 justify-center items-end max-w-[304px]"
                         names={[prices[0]]}
                     />
                     :

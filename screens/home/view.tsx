@@ -13,7 +13,7 @@ export function HomePage() {
             <Header />
             <Hookah />
 
-            <div className='flex flex-col gap-20 w-full pl-8'>
+            <div className='flex flex-col gap-20 w-full px-8'>
                 {[
                     coffee,
                     ratte,

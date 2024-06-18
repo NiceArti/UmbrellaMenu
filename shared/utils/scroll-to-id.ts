@@ -7,6 +7,8 @@ export function scrollToId(id?: string) {
     const el = document.getElementById(id);
 
     if (el) {
-        el.scrollIntoView({behavior: 'smooth'});
+        el.classList.remove("blink");
+        el.scrollIntoView({behavior: 'smooth', block: "center"});
+        el.classList.add("blink");
     }
 }

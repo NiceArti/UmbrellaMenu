@@ -79,4 +79,20 @@
       text-shadow: -3px 0 #860000;
     }
 
+    .blink {
+      animation: blink-animation 1.5s;
+      animation-fill-mode: both;
+    }
+    
+    @keyframes blink-animation {
+      0% { background: none; }
+      50% { background: lightgray; }
+      100% { background: none; }
+    }
+    @-webkit-keyframes blink-animation {
+      0% { background: none; }
+      50% { background: lightgray; }
+      100% { background: none; }
+    }
+
 }
