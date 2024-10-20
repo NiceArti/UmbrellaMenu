@@ -117,7 +117,6 @@ export const lemonades: PositionsType = {
 
 
 export const chineseTeas: PositionsType = {
-    tag: "tea",
     title: "Китайский чай",
     names: [
         "Улун дыня",
@@ -145,7 +144,7 @@ export const chineseTeas: PositionsType = {
 
 
 export const hotTeas: PositionsType = {
-    tag: "hot-teas",
+    tag: "tea",
     title: "Согревающие чаи",
     names: [
         "Облепиха с имбирём",
