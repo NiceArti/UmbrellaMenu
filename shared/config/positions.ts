@@ -61,12 +61,26 @@ export const glintwein: PositionsType = {
     ]
 }
 
-export const mangoshake: PositionsType = {
-    title: "Манго шейк",
+export const herbalTea: PositionsType = {
+    title: "Чай травяной",
     prices: [
-        "450",
+        "400",
     ]
 }
+
+export const buckwheatTea: PositionsType = {
+    title: "Чай гречишный",
+    prices: [
+        "400",
+    ]
+}
+
+// export const mangoshake: PositionsType = {
+//     title: "Манго шейк",
+//     prices: [
+//         "450",
+//     ]
+// }
 
 
 export const additivesForTeaAndCoffee: PositionsType = {
@@ -92,7 +106,6 @@ export const lemonades: PositionsType = {
     tag: "lemonade",
     title: "Лимонады",
     names: [
-        "Лайм - мята",
         "Манго - маракуйя",
         "Малина - базилик",
         "Груша - бергамот",
@@ -107,6 +120,7 @@ export const chineseTeas: PositionsType = {
     tag: "tea",
     title: "Китайский чай",
     names: [
+        "Улун дыня",
         "Улун апельсиновый",
         "Улун молочный",
         "Жасминовый",
@@ -117,33 +131,35 @@ export const chineseTeas: PositionsType = {
         "Те Гуанинь",
     ],
     prices: [
+        "550",
         "500",
         "500",
         "500",
         "700",
         "550",
-        "550",
-        "550",
+        "650",
+        "600",
         "600",
     ]
 }
 
 
 export const hotTeas: PositionsType = {
-    title: "Согревающие чайные напитки",
+    tag: "hot-teas",
+    title: "Согревающие чаи",
     names: [
+        "Облепиха с имбирём",
+        "Груша с жасмином",
+        "Брусника клюква",
         "Марокканский чай",
-        "Грушевый чай с жасмином",
         "Ягодный чай",
-        "Облепиховый чай с имбирем",
-        "Брусника-клюква",
     ],
     prices: [
-        "400",
         "550",
-        "450",
+        "550",
+        "550",
         "500",
-        "550",
+        "500",
     ]
 }
 
@@ -161,7 +177,7 @@ export const blackTeas: PositionsType = {
         "Красные ягоды",
     ],
     prices: [
-        "350",
+        "400",
     ]
 }
 
@@ -178,7 +194,7 @@ export const greenTeas: PositionsType = {
         "Сокровище Японии",
     ],
     prices: [
-        "350",
+        "400",
     ]
 }
 

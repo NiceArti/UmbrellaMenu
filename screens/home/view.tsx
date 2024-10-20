@@ -5,7 +5,7 @@ import { Footer } from '@/widgets/footer';
 
 import { PageLayout } from '@/shared/ui';
 import { MenuPositions } from '@/widgets/menu-positions';
-import { additivesForTeaAndCoffee, beer, blackTeas, chineseTeas, coffee, coldDrinks, glintwein, greenTeas, lemonades, mangoshake, matchaLatte, milkshakes, ratte, snacks } from '@/shared/config/positions';
+import { additivesForTeaAndCoffee, beer, blackTeas, buckwheatTea, chineseTeas, coffee, coldDrinks, glintwein, greenTeas, herbalTea, hotTeas, lemonades, matchaLatte, milkshakes, ratte, snacks } from '@/shared/config/positions';
 
 export function HomePage() {
     return (
@@ -16,6 +16,7 @@ export function HomePage() {
             <div className='flex flex-col gap-20 w-full px-8'>
                 {[
                     coffee,
+                    hotTeas,
                     ratte,
                     matchaLatte,
                     glintwein,
@@ -24,9 +25,11 @@ export function HomePage() {
                     chineseTeas,
                     blackTeas,
                     greenTeas,
+                    herbalTea,
+                    buckwheatTea,
                     coldDrinks,
                     milkshakes,
-                    mangoshake,
+                    // mangoshake,
                     snacks,
                     beer,
                 ].map((position, index) => 

@@ -6,6 +6,10 @@ export const navItems: {text: string, tag: Tag}[] = [
         tag: "coffee",
     },
     {
+        text: "Согревающие чаи",
+        tag: "hot-teas",
+    },
+    {
         text: "Лимонады",
         tag: "lemonade",
     },

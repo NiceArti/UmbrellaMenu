@@ -5,4 +5,5 @@ export type Tag =
 "milkshake" |
 "snack" |
 "beer" |
-"cooled-drinks";
+"cooled-drinks" |
+"hot-teas";
