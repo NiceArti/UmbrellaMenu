@@ -63,7 +63,7 @@ const PositionsTableView = ({names, prices}:{names: string[], prices: string[]})
                         <td className="grow max-w-[304px]">
                             {name}
                         </td>
-                        <td className="border-l-2 border-primary max-w-20 w-20 justify-center items-end text-right">
+                        <td className="border-l-2 border-primary min-w-[80px] w-20 justify-center items-end text-right">
                             {index < prices.length ? prices[index] : ""}
                         </td>
                     </tr>
