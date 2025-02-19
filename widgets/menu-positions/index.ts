@@ -1,1 +1,0 @@
-export { MenuPositions } from "./view";

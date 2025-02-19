@@ -28,7 +28,7 @@ export function Footer() {
 
             <div className="flex flex-col gap-2 px-8">
                 <Anchor 
-                    href={'#'}
+                    href={'https://yandex.com/maps/-/CHu4iUM3'}
                     item={LocationAsset}
                     text={"20-летия октября, 103"}
                 />
@@ -40,7 +40,7 @@ export function Footer() {
                 />
 
                 <Anchor
-                    href={'#'}
+                    href={'tel:+74732286758'}
                     item={PhoneAsset}
                     text={"228 67 58"}
                 />

@@ -39,10 +39,11 @@ export function HomePage() {
                         title={position.title}
                         names={position.names} 
                         prices={position.prices}
+                        tableView={position.tableView}
                     />
                 )}
             </div>
-
+            
             <Footer />
         </PageLayout>
     )
