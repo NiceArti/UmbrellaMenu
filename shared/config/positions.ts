@@ -129,7 +129,7 @@ export const lemonades: PositionsType = {
         "",
         "",
         "",
-        "1,20 л",
+        "1,2 л",
         "1050"
     ]
 }
@@ -191,7 +191,7 @@ export const hotTeas: PositionsType = {
         "550",
         "550",
         "550",
-        "500",
+        // "500",
         "500",
     ]
 }
