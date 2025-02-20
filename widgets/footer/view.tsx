@@ -27,13 +27,15 @@ export function Footer() {
             </div>
 
             <div className="flex flex-col gap-2 px-8">
-                <Anchor 
+                <Anchor
+                    target="_blank"
                     href={'https://yandex.com/maps/-/CHu4iUM3'}
                     item={LocationAsset}
                     text={"20-летия октября, 103"}
                 />
 
                 <Anchor
+                    target="_blank"
                     href={'https://instagram.com/umbrella_vrn?igshid=MTk0NTkyODZkYg=='}
                     item={InstagramAsset}
                     text={"Umbrella_vrn"}
