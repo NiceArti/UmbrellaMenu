@@ -59,7 +59,7 @@ const PositionsTableView = ({names, prices}:{names: string[], prices: string[]})
             <tbody>
                 {names.map((name, index) => (
                     <tr key={index} className="inline-flex justify-between w-full text-xl font-semibold tracking-wider">
-                        <td className="grow max-w-[304px] p-2">
+                        <td className="grow max-w-[304px] py-2">
                             {name}
                         </td>
                         <td className="border-l-2 border-primary min-w-[80px] w-20 justify-center items-end text-right p-2">
