@@ -136,6 +136,7 @@ export const lemonades: PositionsType = {
 
 
 export const chineseTeas: PositionsType = {
+    tag: "tea",
     tableView: true,
     title: "Китайский чай",
     names: [
