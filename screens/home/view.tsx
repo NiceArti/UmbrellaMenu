@@ -20,7 +20,7 @@ export function HomePage() {
                     matchaLatte,
                     glintwein,
                     additivesForTeaAndCoffee,
-                    hotTeas,
+                    // hotTeas,
                     chineseTeas,
                     blackTeas,
                     greenTeas,
