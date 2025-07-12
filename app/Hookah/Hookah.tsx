@@ -55,6 +55,17 @@ export default function Hookah() {
                         </div>
                     </div>
                 </div>
+                <div className={styles["__row"]}>
+                    <div className={`${styles["__col"]} ${styles["__humans-amount"]}`}>
+                        Электронный кальян ENSO
+                    </div>
+
+                    <div className={styles["__col"]}>
+                        <div className={styles["__price-list"]}>
+                            <h3 className={styles["__humans-amount"]}>2500</h3>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div className={styles["__footer"]}>
