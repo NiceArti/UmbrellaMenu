@@ -1,80 +1,70 @@
 import Image from 'next/image';
-import styles from './Hookah.module.scss';
 import { UnionAsset, HookahAsset } from '@/shared/images';
 import { Title } from '@/shared/ui';
 
 
 export default function Hookah() {
     return (
-        <div className={styles["hookah-component"]}>
+        <div className='w-full px-8'>
             <Title title='Кальяны'/>
 
-            <div className={styles["__about"]}>
-                <div className={styles["__row"]}>
-                    <div className={`${styles["__col"]} ${styles["w-150"]}`}>
+            <div className='flex flex-col'>
+                <div className='inline-flex items-center justify-between h-14'>
+                    <div className='inline-flex gap-2 w-1/3'>
                         <Image src={UnionAsset} alt='human'/>
-                        <Image src={UnionAsset} alt='human'/>
+                        <Image src={UnionAsset} alt='human'/>   
                         <Image src={UnionAsset} alt='human'/>
                     </div>
-                    
-                    <div className={`${styles["__col"]} ${styles["w-50"]}`}>
-                        <h3 className={styles["__humans-amount"]}>1-3 <br/> чел.</h3>
-                    </div>
-
-                    <div className={`${styles["__col"]} ${styles["w-80"]}`}>
+                    <p className='text-center text-xl font-semibold w-1/3 leading-tight'>
+                        1-3<br/>чел.
+                    </p>
+                    <div className='w-1/3'>
                         <Image src={HookahAsset} alt='hookan'/>
                     </div>
 
-                    <div className={styles["__col"]}>
-                        <div className={`${styles["__price-list"]} ${styles["h-50"]}`}>
-                            <h3 className={styles["__humans-amount"]}>1500</h3>
-                        </div>
-                    </div>
+                    <p className='h-full text-center text-xl font-semibold tracking-wider border-l-2 border-primary w-20 max-w-20 py-3'>
+                        1500
+                    </p>
                 </div>
-                <div className={styles["__row"]}>
-                    <div className={`${styles["__col"]} ${styles["w-150"]}`}>
-                            <Image src={UnionAsset} alt='human' height={36}/>
-                            <Image src={UnionAsset} alt='human' height={36}/>
-                            <Image src={UnionAsset} alt='human' height={36}/>
-                            <Image src={UnionAsset} alt='human' height={36}/>
-                            <Image src={UnionAsset} alt='human' height={36}/>
-                            <Image src={UnionAsset} alt='human' height={36}/>
-                    </div>
-                    <div className={`${styles["__col"]} ${styles["w-50"]}`}>
-                        <h3 className={styles["__humans-amount"]}>4-6 <br/> чел.</h3>
-                    </div>
 
-                    <div className={`${styles["__col"]} ${styles["w-80"]}`}>
+                <div className='inline-flex items-center justify-between h-14'>
+                    <div className='inline-flex gap-2 w-1/3'>
+                        <Image src={UnionAsset} alt='human'/>
+                        <Image src={UnionAsset} alt='human'/>   
+                        <Image src={UnionAsset} alt='human'/>
+                        <Image src={UnionAsset} alt='human'/>
+                        <Image src={UnionAsset} alt='human'/>
+                    </div>
+                    <p className='text-center text-lg font-semibold w-1/3 flex flex-col leading-tight'>
+                        4-6<br />чел.
+                    </p>
+                    <div className='w-1/3 inline-flex gap-2'>
                         <Image src={HookahAsset} alt='hookan'/>
                         <Image src={HookahAsset} alt='hookan'/>
                     </div>
 
-                    <div className={styles["__col"]}>
-                        <div className={styles["__price-list"]}>
-                            <h3 className={styles["__humans-amount"]}>2700</h3>
-                        </div>
-                    </div>
+                    <p className='h-full text-center text-xl font-semibold tracking-wider border-l-2 border-primary w-20 max-w-20 py-3'>
+                        2700
+                    </p>
                 </div>
-                <div className={styles["__row"]}>
-                    <div className={`${styles["__col"]} ${styles["__humans-amount"]}`}>
+
+                <div className='inline-flex items-center justify-between h-14'>
+                    <p className='text-left text-lg font-semibold w-full flex flex-col leading-tight'>
                         Электронный кальян ENSO
-                    </div>
+                    </p>
 
-                    <div className={styles["__col"]}>
-                        <div className={styles["__price-list"]}>
-                            <h3 className={styles["__humans-amount"]}>2500</h3>
-                        </div>
-                    </div>
+                    <p className='h-full text-center text-xl font-semibold tracking-wider border-l-2 border-primary w-20 max-w-20 py-3'>
+                        2500
+                    </p>
                 </div>
+
             </div>
 
-            <div className={styles["__footer"]}>
-                <p>
-                    Ограничение времени бронирования стола - 90 мин.<br />
-                    Отсчёт времени начинается после подачи кальяна.<br />
-                    Курит гость или нет - цена кальяна не меняется.
-                </p>
-            </div>
+            <p className='text-center text-sm italic tracking-wider mt-12'>
+                Ограничение времени бронирования стола - 90 мин.<br />
+                Отсчёт времени начинается после подачи кальяна.<br />
+                Курит гость или нет - цена кальяна не меняется.
+            </p>
         </div>
     )
 }
