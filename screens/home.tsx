@@ -1,5 +1,5 @@
 
-import Hookah from '../../app/Hookah/Hookah';
+import Hookah from '../app/Hookah/Hookah';
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
 

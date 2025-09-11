@@ -11,6 +11,7 @@ interface PositionsType {
 export const coffee: PositionsType = {
     tag: "coffee",
     title: "Кофе",
+    tableView: true,
     names: [
         "Эспрессо",
         "Американо",
