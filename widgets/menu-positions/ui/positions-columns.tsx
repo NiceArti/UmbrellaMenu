@@ -18,15 +18,6 @@ export function PositionsColumns({
       <div className="grow max-w-[304px] flex flex-col gap-2 text-xl font-semibold tracking-wider">
         {names.map((value, i) => (
           <div key={i} className="flex items-center gap-2">
-            {editable ? (
-              <input
-                className="rounded border p-2 text-black flex-1"
-                value={value}
-                onChange={(e) => onChangeName?.(i, e.target.value)}
-              />
-            ) : (
-              <span className="flex-1">{value}</span>
-            )}
             {editable && onRemove && (
               <button
                 type="button"
@@ -37,6 +28,15 @@ export function PositionsColumns({
               >
                 ✖
               </button>
+            )}
+            {editable ? (
+              <input
+                className="rounded border p-2 text-black flex-1"
+                value={value}
+                onChange={(e) => onChangeName?.(i, e.target.value)}
+              />
+            ) : (
+              <span className="flex-1">{value}</span>
             )}
           </div>
         ))}
