@@ -57,7 +57,7 @@ export function MenuPositions({
     (localNames?.length || 0) > 0 || (localPrices?.length || 0) > 0;
 
   return (
-    <div id={tag} className="flex flex-col gap-5 w-full h-auto">
+    <div id={tag} className={cn("flex flex-col gap-5 w-full h-auto", (localNames.length === 1 || localNames.length === 0) && "inline-flex flex-row")}>
       {hasRows ? (
         <>
           {isEditMode && (

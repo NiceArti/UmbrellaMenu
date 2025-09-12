@@ -16,7 +16,7 @@ export function PositionsColumns({
   onRemove?: (index: number) => void;
 }) {
   return (
-    <div className="inline-flex justify-between w-full gap-3">
+    <div className="inline-flex justify-between w-full">
       <div className="grow max-w-[304px] flex flex-col gap-2 text-xl font-semibold tracking-wider">
         {names.map((value, i) => (
           <div key={i} className="flex items-center gap-2">
