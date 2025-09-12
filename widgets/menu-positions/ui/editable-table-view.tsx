@@ -1,4 +1,5 @@
 import { AddButton } from "@/widgets/admin/add-button";
+import { RemoveButton } from "@/widgets/admin/remove-button";
 
 export function EditableTableView({
   names,
@@ -43,20 +44,14 @@ export function EditableTableView({
                 />
               </td>
               <td className="py-[6px] pl-2">
-                <button
-                  type="button"
-                  className="px-2 py-1 border text-sm"
+                <RemoveButton
                   onClick={() => {
                     const nextNames = names.filter((_, i) => i !== index);
                     const nextPrices = prices.filter((_, i) => i !== index);
                     setNames(nextNames);
                     setPrices(nextPrices);
                   }}
-                  aria-label="Удалить строку"
-                  title="Удалить строку"
-                >
-                  ✖
-                </button>
+                />
               </td>
             </tr>
           ))}

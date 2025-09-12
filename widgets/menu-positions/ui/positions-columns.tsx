@@ -1,3 +1,5 @@
+import { RemoveButton } from "@/widgets/admin/remove-button";
+
 export function PositionsColumns({
   editable,
   names,
@@ -19,15 +21,10 @@ export function PositionsColumns({
         {names.map((value, i) => (
           <div key={i} className="flex items-center gap-2">
             {editable && onRemove && (
-              <button
-                type="button"
+              <RemoveButton
                 className="px-2 py-1 border text-sm"
                 onClick={() => onRemove(i)}
-                aria-label="Удалить строку"
-                title="Удалить строку"
-              >
-                ✖
-              </button>
+              />
             )}
             {editable ? (
               <input
