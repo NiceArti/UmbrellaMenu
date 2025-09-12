@@ -7,15 +7,13 @@ import PhoneAsset from "./phone.png";
 import StoneBgAsset from "./stone-bg.png";
 import UnionAsset from "./union.png";
 
-
-
 export {
-    ArrowAsset,
-    InstagramAsset,
-    LocationAsset,
-    LogoAsset,
-    HookahAsset,
-    PhoneAsset,
-    StoneBgAsset,
-    UnionAsset,
-}
+  ArrowAsset,
+  InstagramAsset,
+  LocationAsset,
+  LogoAsset,
+  HookahAsset,
+  PhoneAsset,
+  StoneBgAsset,
+  UnionAsset,
+};
