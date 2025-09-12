@@ -49,9 +49,55 @@
     {
       "tag": "cooled-drinks",
       "text": "Холодные напитки"
+    },
+    {
+      "tag": "",
+      "text": "sdsdsd"
+    },
+    {
+      "tag": "qq",
+      "text": "qq"
+    },
+    {
+      "tag": "hekko",
+      "text": "hekko"
     }
   ],
   "positions": [
+    {
+      "tag": "hello",
+      "title": "hekko",
+      "isHidden": false,
+      "names": [
+        "dfsdf",
+        "sdsd"
+      ],
+      "prices": [
+        "23",
+        ""
+      ],
+      "tableView": false
+    },
+    {
+      "tag": "qq",
+      "title": "sdssdsd",
+      "isHidden": false,
+      "names": [
+        "sdsd"
+      ],
+      "prices": [
+        "12"
+      ],
+      "tableView": false
+    },
+    {
+      "tag": "test",
+      "title": "sdsd",
+      "isHidden": false,
+      "names": [],
+      "prices": [],
+      "tableView": false
+    },
     {
       "tag": "coffee",
       "title": "Кофе",
@@ -81,33 +127,6 @@
       "tableView": false
     },
     {
-      "title": "Ratte",
-      "isHidden": false,
-      "names": [
-        "Вафля попкорн",
-        "Малина кокос",
-        "Банановое мороженое с солёной карамелью ",
-        "Сырный"
-      ],
-      "prices": [
-        "350",
-        ""
-      ],
-      "tableView": false
-    },
-    {
-      "title": "Matcha Latte",
-      "isHidden": false,
-      "names": [
-        "Классический",
-        "Зелёный бергамот"
-      ],
-      "prices": [
-        "350"
-      ],
-      "tableView": false
-    },
-    {
       "title": "Глинтвейн",
       "isHidden": false,
       "prices": [
@@ -118,24 +137,6 @@
       "names": [
         ""
       ]
-    },
-    {
-      "title": "Чай травяной",
-      "isHidden": false,
-      "prices": [
-        "400"
-      ],
-      "tableView": false,
-      "names": []
-    },
-    {
-      "title": "Чай гречишный",
-      "isHidden": false,
-      "prices": [
-        "400"
-      ],
-      "tableView": false,
-      "names": []
     },
     {
       "title": "Добавки к чаю и кофе",
@@ -346,6 +347,30 @@
         "250",
         "300"
       ]
+    },
+    {
+      "tag": "section-1757709667882",
+      "title": "",
+      "isHidden": false,
+      "names": [],
+      "prices": [],
+      "tableView": false
+    },
+    {
+      "tag": "test",
+      "title": "Test",
+      "isHidden": true,
+      "names": [
+        "test1",
+        "test2",
+        "test3"
+      ],
+      "prices": [
+        "250",
+        "",
+        ""
+      ],
+      "tableView": false
     }
   ]
 }

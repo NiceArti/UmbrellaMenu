@@ -41,6 +41,7 @@ export async function PUT(req: NextRequest) {
       isHidden,
       navigation,
       hookah,
+      newPosition,
     } = body || {};
 
     const filePath = path.join(process.cwd(), "db", "collections.json");
@@ -57,6 +58,40 @@ export async function PUT(req: NextRequest) {
       data.navigation = sanitized;
       await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
       return NextResponse.json({ ok: true, data: sanitized });
+    }
+
+    // Create a new position section
+    if (newPosition && typeof newPosition === "object") {
+      const positions = Array.isArray(data.positions) ? data.positions : [];
+      const sanitizedNew = {
+        tag:
+          typeof newPosition.tag === "string" && newPosition.tag.trim()
+            ? newPosition.tag
+            : `section-${Date.now()}`,
+        title:
+          typeof newPosition.title === "string"
+            ? newPosition.title
+            : "Новая секция",
+        isHidden:
+          typeof newPosition.isHidden === "boolean"
+            ? newPosition.isHidden
+            : false,
+      } as any;
+      if (Array.isArray(newPosition.names))
+        sanitizedNew.names = newPosition.names;
+      else sanitizedNew.names = [];
+      if (Array.isArray(newPosition.prices))
+        sanitizedNew.prices = newPosition.prices;
+      else sanitizedNew.prices = [];
+      sanitizedNew.tableView =
+        typeof newPosition.tableView === "boolean"
+          ? newPosition.tableView
+          : false;
+
+      positions.unshift(sanitizedNew);
+      data.positions = positions;
+      await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
+      return NextResponse.json({ ok: true, data: sanitizedNew });
     }
 
     if (hookah && typeof hookah === "object") {
@@ -93,6 +128,24 @@ export async function PUT(req: NextRequest) {
     }
 
     const positions = Array.isArray(data.positions) ? data.positions : [];
+    // Deletion flow
+    if (body?.deletePosition === true) {
+      const delIndex = positions.findIndex(
+        (p: any) =>
+          (tag && p.tag === tag) || (!tag && title && p.title === title)
+      );
+      if (delIndex === -1) {
+        return NextResponse.json(
+          { ok: false, error: "Раздел не найден" },
+          { status: 404 }
+        );
+      }
+      positions.splice(delIndex, 1);
+      data.positions = positions;
+      await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
+      return NextResponse.json({ ok: true });
+    }
+
     const index = positions.findIndex(
       (p: any) => (tag && p.tag === tag) || (!tag && title && p.title === title)
     );

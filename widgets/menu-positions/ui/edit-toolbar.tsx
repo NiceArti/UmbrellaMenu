@@ -3,25 +3,27 @@ import { cn } from "@/shared/utils";
 export function EditToolbar({
   editing,
   saving,
-  className,
-  isHidden,
   onEditClick,
   onCancel,
   onApply,
+  className,
+  isHidden,
   onToggleHidden,
+  onDelete,
 }: {
   editing: boolean;
   saving: boolean;
+  onEditClick: () => void;
+  onCancel: () => void;
+  onApply: () => void;
   className?: string;
   isHidden?: boolean;
-  onEditClick?: () => void;
-  onCancel?: () => void;
-  onApply?: () => void;
   onToggleHidden?: () => void;
+  onDelete?: () => void;
 }) {
   return (
     <div
-      className={cn("flex justify-end items-center flex-wrap gap-1", className)}
+      className={cn("flex justify-end items-center flex-wrap gap-4", className)}
     >
       {typeof isHidden === "boolean" && (
         <button
@@ -35,11 +37,23 @@ export function EditToolbar({
         </button>
       )}
       {!editing ? (
-        <button className="px-3 py-1 border" onClick={onEditClick}>
-          ✏️ Редактировать
-        </button>
+        <div className="flex gap-3">
+          <button className="px-3 py-1 border" onClick={onEditClick}>
+            ✏️ Редактировать
+          </button>
+          {onDelete && (
+            <button
+              className="px-3 py-1 border text-red-700"
+              onClick={onDelete}
+              disabled={saving}
+              title="Удалить секцию"
+            >
+              🗑️ Удалить
+            </button>
+          )}
+        </div>
       ) : (
-        <div className="flex gap-1">
+        <div className="flex gap-4">
           <button
             className="px-3 py-1 border"
             onClick={onCancel}

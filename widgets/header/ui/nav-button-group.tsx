@@ -17,15 +17,20 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [localItems, setLocalItems] = useState(items);
+  const [tagMode, setTagMode] = useState<boolean[]>(() =>
+    (items || []).map(() => false)
+  );
 
   const onEditClick = () => {
     setEditing(true);
     setLocalItems(items);
+    setTagMode((items || []).map(() => false));
   };
 
   const onCancel = () => {
     setEditing(false);
     setLocalItems(items);
+    setTagMode((items || []).map(() => false));
   };
 
   const onApply = async () => {
@@ -62,24 +67,64 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
           editing ? (
             <>
               {localItems.map((item, index) => (
-                <input
-                  type="text"
-                  className="grow h-16 [text-shadow:_1px_1px_1px_rgb(0_0_0_/_25%)] text-primary-foreground text-center bg-primary/70 text-xl w-1/4 rounded-none focus-visible:bg-red-950"
-                  value={item.text}
-                  onChange={(e) => {
-                    const next = [...localItems];
-                    next[index] = { ...next[index], text: e.target.value };
-                    setLocalItems(next);
-                  }}
-                />
+                <div key={index} className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    className="grow h-16 [text-shadow:_1px_1px_1px_rgb(0_0_0_/_25%)] text-primary-foreground text-center bg-primary/70 text-xl w-56 rounded-none focus-visible:bg-red-950"
+                    value={tagMode[index] ? (item.tag as string) : item.text}
+                    onChange={(e) => {
+                      const next = [...localItems];
+                      if (tagMode[index]) {
+                        next[index] = {
+                          ...next[index],
+                          tag: e.target.value as Tag,
+                        };
+                      } else {
+                        next[index] = { ...next[index], text: e.target.value };
+                      }
+                      setLocalItems(next);
+                    }}
+                    placeholder={tagMode[index] ? "tag" : "Название ссылки"}
+                  />
+                  <label className="flex items-center gap-1 text-xs whitespace-nowrap">
+                    <input
+                      type="checkbox"
+                      checked={!!tagMode[index]}
+                      onChange={(e) => {
+                        const next = [...tagMode];
+                        next[index] = e.target.checked;
+                        setTagMode(next);
+                      }}
+                    />
+                    tag
+                  </label>
+                  <button
+                    type="button"
+                    className="px-2 py-1 border text-sm"
+                    title="Удалить ссылку"
+                    onClick={() => {
+                      const next = localItems.filter((_, i) => i !== index);
+                      const nextMode = tagMode.filter((_, i) => i !== index);
+                      setLocalItems(next);
+                      setTagMode(nextMode);
+                    }}
+                  >
+                    ✖
+                  </button>
+                </div>
               ))}
 
-              {/* TODO: add logic here */}
               <AddButton
                 title="Добавить ссылку"
                 className="text-xl"
-                onClick={() => {}}
-                />
+                onClick={() => {
+                  setLocalItems([
+                    ...localItems,
+                    { text: "", tag: "coffee" as Tag },
+                  ]);
+                  setTagMode([...tagMode, false]);
+                }}
+              />
             </>
           ) : (
             items.map((item, index) => (

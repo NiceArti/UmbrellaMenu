@@ -57,7 +57,14 @@ export function MenuPositions({
     (localNames?.length || 0) > 0 || (localPrices?.length || 0) > 0;
 
   return (
-    <div id={tag} className={cn("flex flex-col gap-5 w-full h-auto", (localNames.length === 1 || localNames.length === 0) && "inline-flex flex-row")}>
+    <div
+      id={tag}
+      className={cn(
+        "flex flex-col gap-5 w-full h-auto"
+        // (localNames.length === 1 || localNames.length === 0) &&
+        //   "inline-flex flex-row"
+      )}
+    >
       {hasRows ? (
         <>
           {isEditMode && (
@@ -81,6 +88,22 @@ export function MenuPositions({
                   });
                   const data = await res.json();
                   if (!res.ok || !data?.ok) return;
+                  onSaved?.();
+                } catch {}
+              }}
+              onDelete={async () => {
+                try {
+                  const res = await fetch("/api/collections", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      tag: tag || undefined,
+                      title,
+                      deletePosition: true,
+                    }),
+                  });
+                  const data = await res.json?.();
+                  if (!res.ok || (data && data.ok === false)) return;
                   onSaved?.();
                 } catch {}
               }}
