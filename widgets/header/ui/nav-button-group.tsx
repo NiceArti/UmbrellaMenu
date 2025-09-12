@@ -75,7 +75,11 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
               ))}
 
               {/* TODO: add logic here */}
-              <AddButton className="text-xl" onClick={() => {}}/>
+              <AddButton
+                title="Добавить ссылку"
+                className="text-xl"
+                onClick={() => {}}
+                />
             </>
           ) : (
             items.map((item, index) => (
