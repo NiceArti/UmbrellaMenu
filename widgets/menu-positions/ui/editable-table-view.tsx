@@ -1,3 +1,5 @@
+import { AddButton } from "@/widgets/admin/add-button";
+
 export function EditableTableView({
   names,
   prices,
@@ -61,16 +63,12 @@ export function EditableTableView({
         </tbody>
       </table>
       <div className="mt-3">
-        <button
-          type="button"
-          className="px-3 py-1 border"
+        <AddButton
           onClick={() => {
             setNames([...(names || []), ""]);
             setPrices([...(prices || []), ""]);
           }}
-        >
-          ➕ Добавить строку
-        </button>
+        />
       </div>
     </div>
   );

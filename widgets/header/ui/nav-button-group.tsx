@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Tag } from "@/shared/config/tags";
 import { ScrollableButton } from "@/shared/ui";
 import { EditToolbar } from "../../menu-positions/ui/edit-toolbar";
+import { AddButton } from "@/widgets/admin/add-button";
 
 interface Props {
   items: {
@@ -59,26 +60,23 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
       <div className="flex flex-wrap w-full gap-1 h-auto">
         {items && items.length ? (
           editing ? (
-            localItems.map((item, index) => (
-              <label
-                key={item.tag}
-                className="flex items-center gap-2 w-full md:w-[calc(25%-0.75rem)]"
-              >
-                {/* <span className="text-sm text-muted-foreground min-w-20">
-                  {item.tag}
-                </span> */}
+            <>
+              {localItems.map((item, index) => (
                 <input
                   type="text"
-                  className="flex-1 h-10 px-2 border text-black"
-                  value={localItems[index].text}
+                  className="grow h-16 [text-shadow:_1px_1px_1px_rgb(0_0_0_/_25%)] text-primary-foreground text-center bg-primary/70 text-xl w-1/4 rounded-none focus-visible:bg-red-950"
+                  value={item.text}
                   onChange={(e) => {
                     const next = [...localItems];
                     next[index] = { ...next[index], text: e.target.value };
                     setLocalItems(next);
                   }}
                 />
-              </label>
-            ))
+              ))}
+
+              {/* TODO: add logic here */}
+              <AddButton className="text-xl" onClick={() => {}}/>
+            </>
           ) : (
             items.map((item, index) => (
               <ScrollableButton

@@ -9,8 +9,8 @@ export function PositionsColumns({
   editable: boolean;
   names: string[];
   prices: string[];
-  onChangeName: (index: number, value: string) => void;
-  onChangePrice: (index: number, value: string) => void;
+  onChangeName?: (index: number, value: string) => void;
+  onChangePrice?: (index: number, value: string) => void;
   onRemove?: (index: number) => void;
 }) {
   return (
@@ -22,7 +22,7 @@ export function PositionsColumns({
               <input
                 className="rounded border p-2 text-black flex-1"
                 value={value}
-                onChange={(e) => onChangeName(i, e.target.value)}
+                onChange={(e) => onChangeName?.(i, e.target.value)}
               />
             ) : (
               <span className="flex-1">{value}</span>
@@ -48,7 +48,7 @@ export function PositionsColumns({
               key={i}
               className="w-full text-right rounded border p-2 text-black"
               value={value}
-              onChange={(e) => onChangePrice(i, e.target.value)}
+              onChange={(e) => onChangePrice?.(i, e.target.value)}
             />
           ) : (
             <span key={i}>{value}</span>

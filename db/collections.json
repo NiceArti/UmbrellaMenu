@@ -28,7 +28,7 @@
     },
     {
       "tag": "tea",
-      "text": "Чай"
+      "text": "Чуё"
     },
     {
       "tag": "lemonade",
@@ -54,7 +54,7 @@
   "positions": [
     {
       "tag": "coffee",
-      "title": "Кофеsss",
+      "title": "Кофе",
       "isHidden": false,
       "names": [
         "Эспрессо",
@@ -64,7 +64,8 @@
         "Капучино с маршмеллоу",
         "Раф",
         "Какао",
-        "Латте"
+        "Латте",
+        "Hellblade"
       ],
       "prices": [
         "170",
@@ -74,7 +75,8 @@
         "320",
         "300",
         "300",
-        "270"
+        "270",
+        "214"
       ],
       "tableView": false
     },
@@ -131,7 +133,9 @@
       "isHidden": false,
       "prices": [
         "400"
-      ]
+      ],
+      "tableView": false,
+      "names": []
     },
     {
       "title": "Добавки к чаю и кофе",

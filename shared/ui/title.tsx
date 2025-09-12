@@ -19,7 +19,7 @@ export function Title({
         type="text"
         className={
           className ||
-          "text-primary font-bold text-3xl border px-2 h-10 bg-transparent"
+          "text-primary font-bold text-3xl border px-2 h-10 bg-transparent w-full"
         }
         value={title ?? ""}
         onChange={(e) => onChangeTitle(e.target.value)}

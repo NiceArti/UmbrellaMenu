@@ -8,6 +8,7 @@ import { EditableTableView } from "./ui/editable-table-view";
 import { PositionsColumns } from "./ui/positions-columns";
 import { Position } from "./ui/position";
 import { PositionsTableView } from "./ui/positions-table.view";
+import { AddButton } from "../admin/add-button";
 
 interface Props {
   title: string;
@@ -85,14 +86,14 @@ export function MenuPositions({
               }}
             />
           )}
-          <div className="flex justify-between">
+          <div className="flex justify-between w-full gap-2">
             <Title
               title={localTitle}
               isEdit={editing}
               onChangeTitle={(v) => setLocalTitle(v)}
             />
             {editing && (
-              <div className="flex gap-4">
+              <div className="flex gap-1">
                 <button
                   type="button"
                   disabled={saving}
@@ -154,16 +155,12 @@ export function MenuPositions({
           )}
           {editing && !localTableView && (
             <div>
-              <button
-                type="button"
-                className="px-3 py-1 border"
+              <AddButton
                 onClick={() => {
                   setLocalNames([...(localNames || []), ""]);
                   setLocalPrices([...(localPrices || []), ""]);
                 }}
-              >
-                ➕ Добавить строку
-              </button>
+              />
             </div>
           )}
         </>
