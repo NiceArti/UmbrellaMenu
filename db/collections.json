@@ -51,12 +51,8 @@
       "text": "Холодные напитки"
     },
     {
-      "tag": "",
-      "text": "sdsdsd"
-    },
-    {
-      "tag": "qq",
-      "text": "qq"
+      "tag": "222",
+      "text": "qqq"
     },
     {
       "tag": "hekko",
@@ -64,6 +60,38 @@
     }
   ],
   "positions": [
+    {
+      "tag": "222",
+      "title": "New section",
+      "isHidden": false,
+      "names": [
+        "qwerty",
+        "fdsdse",
+        "sqdqsdqsd",
+        "ytbtyvervre"
+      ],
+      "prices": [
+        "",
+        "",
+        "655",
+        ""
+      ],
+      "tableView": false
+    },
+    {
+      "tag": "new",
+      "title": "New section",
+      "isHidden": false,
+      "names": [
+        "first 2 ",
+        "first 3"
+      ],
+      "prices": [
+        "200",
+        ""
+      ],
+      "tableView": false
+    },
     {
       "tag": "hello",
       "title": "hekko",
@@ -83,7 +111,7 @@
       "title": "sdssdsd",
       "isHidden": false,
       "names": [
-        "sdsd"
+        ""
       ],
       "prices": [
         "12"
@@ -149,7 +177,7 @@
         "Лимон"
       ],
       "prices": [
-        "30",
+        "",
         "30",
         "100",
         "30",
@@ -180,7 +208,8 @@
         "",
         "1,2 л",
         "1050"
-      ]
+      ],
+      "tableView": false
     },
     {
       "tag": "tea",
