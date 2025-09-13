@@ -22,10 +22,8 @@ export function EditToolbar({
   onDelete?: () => void;
 }) {
   return (
-    <div
-      className={cn("flex justify-end items-center flex-wrap gap-4", className)}
-    >
-      {typeof isHidden === "boolean" && (
+    <div className={cn("flex justify-end items-center gap-4", className)}>
+      {isHidden !== undefined && !editing && (
         <button
           className="px-3 py-1 border"
           type="button"
@@ -33,7 +31,7 @@ export function EditToolbar({
           disabled={saving}
           title={isHidden ? "Показать" : "Скрыть"}
         >
-          {isHidden ? "👁️ Показать" : "🙈 Скрыть"}
+          {saving ? "👁️ Обновление" : isHidden ? "👁️ Показать" : "🙈 Скрыть"}
         </button>
       )}
 
@@ -49,7 +47,7 @@ export function EditToolbar({
               disabled={saving}
               title="Удалить секцию"
             >
-              🗑️ Удалить
+              {saving ? "🗑️ Удаление" : "🗑️ Удалить"}
             </button>
           )}
         </div>

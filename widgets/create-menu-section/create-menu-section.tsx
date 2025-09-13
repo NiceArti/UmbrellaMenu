@@ -81,11 +81,17 @@ export function CreateMenuSection({ onSaved }: { onSaved: () => void }) {
               onClick={async () => {
                 try {
                   setCreating(true);
+                  const collections = await fetch("/api/collections", {
+                    method: "GET",
+                  });
+                  const collectionsData = await collections.json();
+                  const nextId = collectionsData.positions.length + 1;
                   const res = await fetch("/api/collections", {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                       newPosition: {
+                        id: nextId,
                         tag: newTag || undefined,
                         title: newTitle || "",
                         isHidden: !!newHidden,

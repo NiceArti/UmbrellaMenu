@@ -64,7 +64,9 @@ export async function PUT(req: NextRequest) {
     // Create a new position section
     if (newPosition && typeof newPosition === "object") {
       const positions = Array.isArray(data.positions) ? data.positions : [];
+      const nextId = positions.length + 1;
       const sanitizedNew = {
+        id: nextId,
         tag:
           typeof newPosition.tag === "string" && newPosition.tag.trim()
             ? newPosition.tag

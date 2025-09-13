@@ -3,12 +3,12 @@ import { Tag } from "@/shared/config/tags";
 import { ScrollableButton } from "@/shared/ui";
 import { EditToolbar } from "../../menu-positions/ui/edit-toolbar";
 import { AddButton } from "@/widgets/admin/add-button";
+import type { INavigationItem } from "@/shared/types";
+import { ReactSortable } from "react-sortablejs";
+import { cn } from "@/shared/utils";
 
 interface Props {
-  items: {
-    text: string;
-    tag: Tag;
-  }[];
+  items: INavigationItem[];
   isEditMode?: boolean;
   onSaved?: () => void;
 }
@@ -20,6 +20,8 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
   const [tagMode, setTagMode] = useState<boolean[]>(() =>
     (items || []).map(() => false)
   );
+  const [isSortable, setIsSortable] = useState(false);
+  const [savingOrder, setSavingOrder] = useState(false);
 
   const onEditClick = () => {
     setEditing(true);
@@ -53,14 +55,28 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
   return (
     <div className="flex flex-col w-full gap-2 h-auto relative">
       {isEditMode && (
-        <EditToolbar
-          className="absolute right-8 -top-10"
-          editing={editing}
-          saving={saving}
-          onEditClick={onEditClick}
-          onCancel={onCancel}
-          onApply={onApply}
-        />
+        <>
+          <EditToolbar
+            className="absolute right-8 -top-10"
+            editing={editing}
+            saving={saving}
+            onEditClick={onEditClick}
+            onCancel={onCancel}
+            onApply={onApply}
+          />
+          <button
+            type="button"
+            className={cn("mx-2 px-3 py-1 border", editing && "hidden")}
+            onClick={() => setIsSortable(!isSortable)}
+            disabled={savingOrder}
+          >
+            {savingOrder
+              ? "Применяется сортировка"
+              : isSortable
+              ? "Отключить сортировку"
+              : "Включить сортировку"}
+          </button>
+        </>
       )}
       <div className="flex flex-wrap w-full gap-1 h-auto">
         {items && items.length ? (
@@ -126,7 +142,7 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
                   onClick={() => {
                     setLocalItems([
                       ...localItems,
-                      { text: "", tag: "" as Tag },
+                      { id: localItems.length + 1, text: "", tag: "" as Tag },
                     ]);
                     setTagMode([...tagMode, false]);
                   }}
@@ -134,14 +150,41 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
               </div>
             </>
           ) : (
-            items.map((item, index) => (
-              <ScrollableButton
-                key={index}
-                tag={item.tag}
-                value={item.text}
-                className="grow h-16 [text-shadow:_1px_1px_1px_rgb(0_0_0_/_25%)] text-primary-foreground bg-primary text-xl w-1/4 rounded-none focus-visible:bg-red-950"
-              />
-            ))
+            <ReactSortable
+              disabled={!isSortable || savingOrder}
+              touchStartThreshold={8}
+              className="flex flex-wrap w-full gap-1 h-auto"
+              list={localItems}
+              setList={async (next) => {
+                setLocalItems(next);
+                setSavingOrder(true);
+                try {
+                  const sanitized = next.map((n) => ({
+                    tag: n.tag,
+                    text: n.text,
+                  }));
+                  await fetch("/api/collections", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ navigation: sanitized }),
+                  });
+                } catch (e) {
+                  console.error("Failed to persist navigation order", e);
+                } finally {
+                  setSavingOrder(false);
+                }
+              }}
+              animation={150}
+            >
+              {localItems.map((item) => (
+                <ScrollableButton
+                  key={item.id + item.tag}
+                  tag={item.tag}
+                  value={item.text}
+                  className="grow h-16 [text-shadow:_1px_1px_1px_rgb(0_0_0_/_25%)] text-primary-foreground bg-primary text-xl w-1/4 rounded-none focus-visible:bg-red-950"
+                />
+              ))}
+            </ReactSortable>
           )
         ) : (
           <span

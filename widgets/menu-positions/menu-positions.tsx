@@ -39,6 +39,7 @@ export function MenuPositions({
     applyChanges,
     onToggleHidden,
     onDelete,
+    localIsHidden,
     localTableView,
     setLocalTableView,
     localTag,
@@ -68,7 +69,7 @@ export function MenuPositions({
           onEditClick={onEditClick}
           onCancel={onCancel}
           onApply={applyChanges}
-          isHidden={isHidden}
+          isHidden={localIsHidden}
           onToggleHidden={onToggleHidden}
           onDelete={onDelete}
         />

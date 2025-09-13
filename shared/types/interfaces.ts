@@ -1,10 +1,12 @@
 import { Tag } from "../config/tags";
 
 export interface INavigationItem {
+  id: number;
   text: string;
   tag: Tag;
 }
 export interface IPositionItem {
+  id: number;
   tag?: Tag;
   title?: string;
   isHidden?: boolean;

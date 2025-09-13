@@ -1,10 +1,10 @@
 "use client";
 
+import { INavigationItem } from "@/shared/types";
 import { MenuWithBg, NavButtonGroup } from "./ui";
-import type { Tag } from "@/shared/config/tags";
 
 type HeaderProps = {
-  items: { text: string; tag: Tag }[];
+  items: INavigationItem[];
   title?: string;
   isEditMode?: boolean;
   onSaved?: () => void;

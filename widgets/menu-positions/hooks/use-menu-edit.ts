@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useMenuEdit = ({
   tag,
@@ -28,6 +28,11 @@ export const useMenuEdit = ({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [localIsHidden, setLocalIsHidden] = useState<boolean>(!!isHidden);
+
+  useEffect(() => {
+    setLocalIsHidden(!!isHidden);
+  }, [isHidden]);
 
   const onEditClick = () => {
     setEditing(true);
@@ -84,6 +89,9 @@ export const useMenuEdit = ({
   };
 
   const onToggleHidden = async () => {
+    const isHidden = !localIsHidden;
+    setLocalIsHidden(isHidden);
+    setSaving(true);
     try {
       const res = await fetch("/api/collections", {
         method: "PUT",
@@ -91,16 +99,24 @@ export const useMenuEdit = ({
         body: JSON.stringify({
           tag: tag || undefined,
           title,
-          isHidden: !isHidden,
+          isHidden,
         }),
       });
       const data = await res.json();
-      if (!res.ok || !data?.ok) return;
+      if (!res.ok || !data?.ok) {
+        setLocalIsHidden(!isHidden);
+        return;
+      }
       onSaved?.();
-    } catch {}
+    } catch {
+      setLocalIsHidden(!isHidden);
+    } finally {
+      setSaving(false);
+    }
   };
 
   const onDelete = async () => {
+    setSaving(true);
     try {
       const res = await fetch("/api/collections", {
         method: "PUT",
@@ -114,10 +130,15 @@ export const useMenuEdit = ({
       const data = await res.json?.();
       if (!res.ok || (data && data.ok === false)) return;
       onSaved?.();
-    } catch {}
+    } catch {
+      // noop
+    } finally {
+      setSaving(false);
+    }
   };
 
   return {
+    localIsHidden,
     localTag,
     setLocalTag,
     localTitle,

@@ -14,9 +14,9 @@ export async function HomePage() {
       <Header items={navItems} />
       <Hookah data={collections.hookah} />
       <div className="flex flex-col gap-20 w-full px-8">
-        {positions.map((position, index) => (
+        {positions.map((position) => (
           <MenuPositions
-            key={index}
+            key={position.id}
             tag={position.tag ?? ""}
             title={position.title ?? ""}
             names={position.names ?? []}
