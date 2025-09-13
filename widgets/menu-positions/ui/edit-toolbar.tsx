@@ -36,6 +36,7 @@ export function EditToolbar({
           {isHidden ? "👁️ Показать" : "🙈 Скрыть"}
         </button>
       )}
+
       {!editing ? (
         <div className="flex gap-3">
           <button className="px-3 py-1 border" onClick={onEditClick}>

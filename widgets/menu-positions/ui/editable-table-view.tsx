@@ -1,16 +1,17 @@
+import { cn } from "@/shared/utils";
 import { AddButton } from "@/widgets/admin/add-button";
 import { RemoveButton } from "@/widgets/admin/remove-button";
 
 export function EditableTableView({
   names,
   prices,
-  setNames,
-  setPrices,
+  onChangeNames,
+  onChangePrices,
 }: {
   names: string[];
   prices: string[];
-  setNames: (v: string[]) => void;
-  setPrices: (v: string[]) => void;
+  onChangeNames: (v: string[]) => void;
+  onChangePrices: (v: string[]) => void;
 }) {
   return (
     <div className="w-full">
@@ -19,7 +20,7 @@ export function EditableTableView({
           {names.map((_, index) => (
             <tr
               key={index}
-              className="inline-flex justify-between w-full text-xl font-semibold tracking-wider"
+              className="inline-flex justify-between items-center w-full text-xl font-semibold tracking-wider"
             >
               <td className="grow max-w-[304px] py-[6px] pr-2">
                 <input
@@ -28,7 +29,7 @@ export function EditableTableView({
                   onChange={(e) => {
                     const next = [...names];
                     next[index] = e.target.value;
-                    setNames(next);
+                    onChangeNames(next);
                   }}
                 />
               </td>
@@ -39,7 +40,7 @@ export function EditableTableView({
                   onChange={(e) => {
                     const next = [...prices];
                     next[index] = e.target.value;
-                    setPrices(next);
+                    onChangePrices(next);
                   }}
                 />
               </td>
@@ -48,8 +49,8 @@ export function EditableTableView({
                   onClick={() => {
                     const nextNames = names.filter((_, i) => i !== index);
                     const nextPrices = prices.filter((_, i) => i !== index);
-                    setNames(nextNames);
-                    setPrices(nextPrices);
+                    onChangeNames(nextNames);
+                    onChangePrices(nextPrices);
                   }}
                 />
               </td>
@@ -57,11 +58,11 @@ export function EditableTableView({
           ))}
         </tbody>
       </table>
-      <div className="mt-3">
+      <div className="mt-3 w-full">
         <AddButton
           onClick={() => {
-            setNames([...(names || []), ""]);
-            setPrices([...(prices || []), ""]);
+            onChangeNames([...(names || []), ""]);
+            onChangePrices([...(prices || []), ""]);
           }}
         />
       </div>

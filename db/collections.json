@@ -51,15 +51,39 @@
       "text": "Холодные напитки"
     },
     {
-      "tag": "222",
-      "text": "qqq"
-    },
-    {
-      "tag": "hekko",
+      "tag": "hekkos",
       "text": "hekko"
     }
   ],
   "positions": [
+    {
+      "tag": "soup",
+      "title": "Суп",
+      "isHidden": false,
+      "names": [
+        ""
+      ],
+      "prices": [
+        "22"
+      ],
+      "tableView": false
+    },
+    {
+      "tag": "section-1757750633235",
+      "title": "erfdewx",
+      "isHidden": false,
+      "names": [
+        "sdsd",
+        "dsd",
+        "sdsdsd"
+      ],
+      "prices": [
+        "222",
+        "",
+        "22"
+      ],
+      "tableView": true
+    },
     {
       "tag": "222",
       "title": "New section",
@@ -119,18 +143,6 @@
         "214"
       ],
       "tableView": false
-    },
-    {
-      "title": "Глинтвейн",
-      "isHidden": false,
-      "prices": [
-        "350",
-        ""
-      ],
-      "tableView": false,
-      "names": [
-        ""
-      ]
     },
     {
       "title": "Добавки к чаю и кофе",
@@ -342,30 +354,6 @@
         "250",
         "300"
       ]
-    },
-    {
-      "tag": "section-1757709667882",
-      "title": "",
-      "isHidden": false,
-      "names": [],
-      "prices": [],
-      "tableView": false
-    },
-    {
-      "tag": "test",
-      "title": "Test",
-      "isHidden": true,
-      "names": [
-        "test1",
-        "test2",
-        "test3"
-      ],
-      "prices": [
-        "250",
-        "",
-        ""
-      ],
-      "tableView": false
     }
   ]
 }

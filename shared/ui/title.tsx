@@ -19,7 +19,11 @@ export function Title({
     return (
       <input
         type="text"
-        className={cn("text-primary font-bold text-3xl border px-2 h-10 bg-transparent w-full", className)}
+        placeholder="Название секции"
+        className={cn(
+          "text-primary text-center font-bold !text-xl border px-2 h-10 bg-transparent w-full",
+          className
+        )}
         value={title ?? ""}
         onChange={(e) => onChangeTitle(e.target.value)}
       />

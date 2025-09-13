@@ -54,7 +54,7 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
     <div className="flex flex-col w-full gap-2 h-auto relative">
       {isEditMode && (
         <EditToolbar
-          className="absolute right-0 -top-10"
+          className="absolute right-8 -top-10"
           editing={editing}
           saving={saving}
           onEditClick={onEditClick}
@@ -67,7 +67,10 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
           editing ? (
             <>
               {localItems.map((item, index) => (
-                <div key={index} className="flex items-center gap-2">
+                <div
+                  key={index}
+                  className="flex items-center gap-2 w-full px-4"
+                >
                   <input
                     type="text"
                     className="grow h-16 [text-shadow:_1px_1px_1px_rgb(0_0_0_/_25%)] text-primary-foreground text-center bg-primary/70 text-xl w-56 rounded-none focus-visible:bg-red-950"
@@ -84,9 +87,11 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
                       }
                       setLocalItems(next);
                     }}
-                    placeholder={tagMode[index] ? "tag" : "Название ссылки"}
+                    placeholder={
+                      tagMode[index] ? "Название тега" : "Название ссылки"
+                    }
                   />
-                  <label className="flex items-center gap-1 text-xs whitespace-nowrap">
+                  <label className="flex items-center gap-1 text-xl whitespace-nowrap">
                     <input
                       type="checkbox"
                       checked={!!tagMode[index]}
@@ -114,17 +119,19 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
                 </div>
               ))}
 
-              <AddButton
-                title="Добавить ссылку"
-                className="text-xl"
-                onClick={() => {
-                  setLocalItems([
-                    ...localItems,
-                    { text: "", tag: "coffee" as Tag },
-                  ]);
-                  setTagMode([...tagMode, false]);
-                }}
-              />
+              <div className="px-4 mx-auto mt-4">
+                <AddButton
+                  title="Добавить ссылку"
+                  className="text-xl w-full"
+                  onClick={() => {
+                    setLocalItems([
+                      ...localItems,
+                      { text: "", tag: "" as Tag },
+                    ]);
+                    setTagMode([...tagMode, false]);
+                  }}
+                />
+              </div>
             </>
           ) : (
             items.map((item, index) => (

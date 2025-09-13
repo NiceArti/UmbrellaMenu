@@ -76,7 +76,8 @@ export function MenuPositions({
         id={tag}
         className={cn(
           "flex flex-col gap-5 w-full h-auto",
-          names.length === 0 || names[0] === "" ? "flex-row" : "flex-col"
+          names.length === 0 || names[0] === "" ? "flex-row" : "flex-col",
+          editing && "flex-col"
         )}
       >
         {editing && (
@@ -88,26 +89,22 @@ export function MenuPositions({
             onToggleColumnView={() => setLocalTableView(false)}
           />
         )}
-
         <Title
           title={localTitle}
           isEdit={editing}
           onChangeTitle={(v) => setLocalTitle(v)}
         />
-
         {localTableView && editing && (
           <EditableTableView
             names={localNames}
             prices={localPrices}
-            setNames={setLocalNames}
-            setPrices={setLocalPrices}
+            onChangeNames={setLocalNames}
+            onChangePrices={setLocalPrices}
           />
         )}
-
         {localTableView && !editing && (
           <PositionsTableView names={localNames} prices={localPrices} />
         )}
-
         {!localTableView && (
           <PositionsColumns
             editable={editing}

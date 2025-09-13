@@ -19,7 +19,10 @@ export function MenuViewToggle({
         type="button"
         disabled={isDisabled}
         onClick={onToggleTableView}
-        className={cn("px-3 py-1 border", isTableView && "bg-black text-white")}
+        className={cn(
+          "px-3 py-1 border",
+          isTableView && "bg-red-900 text-white"
+        )}
       >
         Таблица
       </button>
@@ -29,7 +32,7 @@ export function MenuViewToggle({
         onClick={onToggleColumnView}
         className={cn(
           "px-3 py-1 border",
-          !isTableView && "bg-black text-white"
+          !isTableView && "bg-red-900 text-white"
         )}
       >
         Колонки
