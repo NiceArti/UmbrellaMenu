@@ -23,97 +23,41 @@
   },
   "navigation": [
     {
-      "tag": "coffee",
-      "text": "Кофе"
-    },
-    {
-      "tag": "snack",
-      "text": "Снеки"
+      "tag": "hekkos",
+      "text": "hekko"
     },
     {
       "tag": "beer",
       "text": "Пиво"
     },
     {
-      "tag": "lemonade",
-      "text": "Лимонады"
-    },
-    {
-      "tag": "hekkos",
-      "text": "hekko"
-    },
-    {
       "tag": "milkshake",
       "text": "Милкшейки"
     },
     {
-      "tag": "cooled-drinks",
-      "text": "Холодные напитки"
+      "tag": "snack",
+      "text": "Снеки"
+    },
+    {
+      "tag": "lemonade",
+      "text": "Лимонады"
+    },
+    {
+      "tag": "coffee",
+      "text": "Кофе"
     },
     {
       "tag": "tea",
       "text": "Чай"
+    },
+    {
+      "tag": "cooled-drinks",
+      "text": "Холодные напитки"
     }
   ],
   "positions": [
     {
       "id": 3,
-      "tag": "lemonade",
-      "title": "Лимонады",
-      "isHidden": false,
-      "names": [
-        "Ананас лемонграсс",
-        "Апельсин ваниль",
-        "Вишня шисо",
-        "Жасмин бузина",
-        "Кактус РЕНЕТ",
-        "Миндаль шафран",
-        "Персик молочный улун",
-        "Фуджи сакура",
-        "Манго маракуйя кокос"
-      ],
-      "prices": [
-        "0,35 л",
-        "400",
-        "",
-        "",
-        "",
-        "1,2 л",
-        "1050"
-      ],
-      "tableView": false
-    },
-    {
-      "id": 4,
-      "tag": "milkshake",
-      "title": "Милкшейки",
-      "isHidden": false,
-      "names": [
-        "Oreo",
-        "Банановый"
-      ],
-      "prices": [
-        "350"
-      ]
-    },
-    {
-      "id": 5,
-      "tag": "snack",
-      "title": "Снеки",
-      "isHidden": false,
-      "names": [
-        "Оreo",
-        "Choco-pie",
-        "Lays STAX"
-      ],
-      "prices": [
-        "100",
-        "100",
-        "350"
-      ]
-    },
-    {
-      "id": 6,
       "tag": "beer",
       "title": "Пиво",
       "isHidden": false,
@@ -129,10 +73,23 @@
       ]
     },
     {
-      "id": 7,
-      "tag": "cooled-drinks",
+      "id": 6,
+      "tag": "qwerty",
+      "title": "Распродажа",
       "isHidden": false,
+      "names": [
+        "Первый"
+      ],
+      "prices": [
+        "228"
+      ],
+      "tableView": false
+    },
+    {
+      "id": 2,
+      "tag": "cooled-drinks",
       "title": "Холодные напитки",
+      "isHidden": false,
       "names": [
         "Вода Байкал газ, б/г",
         "\"Добрый\" Кола",
@@ -151,7 +108,23 @@
       ]
     },
     {
-      "id": 8,
+      "id": 1,
+      "tag": "snack",
+      "title": "Снеки",
+      "isHidden": false,
+      "names": [
+        "Оreo",
+        "Choco-pie",
+        "Lays STAX"
+      ],
+      "prices": [
+        "100",
+        "100",
+        "350"
+      ]
+    },
+    {
+      "id": 4,
       "tag": "soup",
       "title": "Суп",
       "isHidden": false,
@@ -164,7 +137,7 @@
       "tableView": false
     },
     {
-      "id": 9,
+      "id": 5,
       "tag": "44445",
       "title": "New section",
       "isHidden": false,

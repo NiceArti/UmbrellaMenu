@@ -1,4 +1,5 @@
 import { cn } from "@/shared/utils";
+import { Loader } from "lucide-react";
 
 export function EditToolbar({
   editing,
@@ -31,14 +32,22 @@ export function EditToolbar({
           disabled={saving}
           title={isHidden ? "Показать" : "Скрыть"}
         >
-          {saving ? "👁️ Обновление" : isHidden ? "👁️ Показать" : "🙈 Скрыть"}
+          {saving ? (
+            <span className="flex flex-row items-center justify-center gap-2 !text-sm flex-wrap">
+              <Loader className="animate-spin" size={20} /> Загрузка
+            </span>
+          ) : isHidden ? (
+            "👁️ Показать"
+          ) : (
+            "🙈 Скрыть"
+          )}
         </button>
       )}
 
       {!editing ? (
         <div className="flex gap-3">
           <button className="px-3 py-1 border" onClick={onEditClick}>
-            ✏️ Редактировать
+            ✏️ Изменить
           </button>
           {onDelete && (
             <button
@@ -47,7 +56,7 @@ export function EditToolbar({
               disabled={saving}
               title="Удалить секцию"
             >
-              {saving ? "🗑️ Удаление" : "🗑️ Удалить"}
+              🗑️ Удалить
             </button>
           )}
         </div>

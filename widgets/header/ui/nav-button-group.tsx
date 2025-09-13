@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Tag } from "@/shared/config/tags";
 import { ScrollableButton } from "@/shared/ui";
 import { EditToolbar } from "../../menu-positions/ui/edit-toolbar";
@@ -22,6 +22,7 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
   );
   const [isSortable, setIsSortable] = useState(false);
   const [savingOrder, setSavingOrder] = useState(false);
+  const latestListRef = useRef<INavigationItem[]>(localItems);
 
   const onEditClick = () => {
     setEditing(true);
@@ -155,11 +156,17 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
               touchStartThreshold={8}
               className="flex flex-wrap w-full gap-1 h-auto"
               list={localItems}
-              setList={async (next) => {
-                setLocalItems(next);
+              setList={(next) => {
+                const reordered = next.map((n, i) => ({ ...n, id: i + 1 }));
+                setLocalItems(reordered);
+                latestListRef.current = reordered;
+              }}
+              onEnd={async () => {
                 setSavingOrder(true);
                 try {
-                  const sanitized = next.map((n) => ({
+                  const current = latestListRef.current;
+                  const sanitized = current.map((n) => ({
+                    id: n.id,
                     tag: n.tag,
                     text: n.text,
                   }));

@@ -43,6 +43,7 @@ export async function PUT(req: NextRequest) {
       navigation,
       hookah,
       newPosition,
+      positions: positionsPayload,
     } = body || {};
 
     const filePath = path.join(process.cwd(), "db", "collections.json");
@@ -57,6 +58,26 @@ export async function PUT(req: NextRequest) {
           text: typeof n.text === "string" ? n.text : "",
         }));
       data.navigation = sanitized;
+      await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
+      return NextResponse.json({ ok: true, data: sanitized });
+    }
+
+    // Reorder the entire positions array
+    if (Array.isArray(positionsPayload)) {
+      const sanitized = positionsPayload
+        .filter((p: any) => p)
+        .map((p: any, i: number) => ({
+          id: typeof p.id === "number" ? p.id : i + 1,
+          ...(typeof p.tag === "string" ? { tag: p.tag } : {}),
+          ...(typeof p.title === "string" ? { title: p.title } : {}),
+          ...(typeof p.isHidden === "boolean" ? { isHidden: p.isHidden } : {}),
+          names: Array.isArray(p.names) ? p.names : [],
+          prices: Array.isArray(p.prices) ? p.prices : [],
+          ...(typeof p.tableView === "boolean"
+            ? { tableView: p.tableView }
+            : {}),
+        }));
+      data.positions = sanitized;
       await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
       return NextResponse.json({ ok: true, data: sanitized });
     }

@@ -116,7 +116,6 @@ export const useMenuEdit = ({
   };
 
   const onDelete = async () => {
-    setSaving(true);
     try {
       const res = await fetch("/api/collections", {
         method: "PUT",
@@ -130,11 +129,7 @@ export const useMenuEdit = ({
       const data = await res.json?.();
       if (!res.ok || (data && data.ok === false)) return;
       onSaved?.();
-    } catch {
-      // noop
-    } finally {
-      setSaving(false);
-    }
+    } catch {}
   };
 
   return {
