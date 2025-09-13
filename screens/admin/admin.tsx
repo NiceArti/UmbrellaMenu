@@ -60,6 +60,9 @@ export function AdminPage({ authenticated }: { authenticated: boolean }) {
       forceFallback: true,
       fallbackOnBody: true,
       fallbackTolerance: 3,
+      ghostClass: "drag-ghost-dark",
+      chosenClass: "drag-chosen",
+      // dragClass: "drag-dragging",
       onEnd: async (evt) => {
         const order = Array.from((evt.to as HTMLElement).children)
           .map((child) => (child as HTMLElement).getAttribute("data-id"))
