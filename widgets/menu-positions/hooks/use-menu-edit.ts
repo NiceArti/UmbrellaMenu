@@ -7,6 +7,7 @@ export const useMenuEdit = ({
   prices,
   tableView,
   onSaved,
+  isHidden,
 }: {
   tag: string;
   title: string;
@@ -14,6 +15,7 @@ export const useMenuEdit = ({
   prices: string[];
   tableView: boolean;
   onSaved?: () => void;
+  isHidden?: boolean;
 }) => {
   const [editing, setEditing] = useState(false);
   const [localTitle, setLocalTitle] = useState<string>(title || "");
@@ -76,6 +78,41 @@ export const useMenuEdit = ({
       setSaving(false);
     }
   };
+
+  const onToggleHidden = async () => {
+    try {
+      const res = await fetch("/api/collections", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          tag: tag || undefined,
+          title,
+          isHidden: !isHidden,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data?.ok) return;
+      onSaved?.();
+    } catch {}
+  };
+
+  const onDelete = async () => {
+    try {
+      const res = await fetch("/api/collections", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          tag: tag || undefined,
+          title,
+          deletePosition: true,
+        }),
+      });
+      const data = await res.json?.();
+      if (!res.ok || (data && data.ok === false)) return;
+      onSaved?.();
+    } catch {}
+  };
+
   return {
     localTitle,
     setLocalTitle,
@@ -90,6 +127,8 @@ export const useMenuEdit = ({
     onEditClick,
     onCancel,
     applyChanges,
+    onToggleHidden,
+    onDelete,
     error,
     success,
   };

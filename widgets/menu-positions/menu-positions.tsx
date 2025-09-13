@@ -8,6 +8,7 @@ import { EditableTableView } from "./ui/editable-table-view";
 import { PositionsColumns } from "./ui/positions-columns";
 import { PositionsTableView } from "./ui/positions-table.view";
 import { AddButton } from "../admin/add-button";
+import { MenuViewToggle } from "./ui/menu-view-toggle";
 
 interface Props {
   title: string;
@@ -36,6 +37,8 @@ export function MenuPositions({
     onEditClick,
     onCancel,
     applyChanges,
+    onToggleHidden,
+    onDelete,
     localTableView,
     setLocalTableView,
     localTitle,
@@ -51,6 +54,7 @@ export function MenuPositions({
     prices,
     tableView,
     onSaved,
+    isHidden,
   });
 
   return (
@@ -63,40 +67,11 @@ export function MenuPositions({
           onCancel={onCancel}
           onApply={applyChanges}
           isHidden={isHidden}
-          onToggleHidden={async () => {
-            try {
-              const res = await fetch("/api/collections", {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  tag: tag || undefined,
-                  title,
-                  isHidden: !isHidden,
-                }),
-              });
-              const data = await res.json();
-              if (!res.ok || !data?.ok) return;
-              onSaved?.();
-            } catch {}
-          }}
-          onDelete={async () => {
-            try {
-              const res = await fetch("/api/collections", {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  tag: tag || undefined,
-                  title,
-                  deletePosition: true,
-                }),
-              });
-              const data = await res.json?.();
-              if (!res.ok || (data && data.ok === false)) return;
-              onSaved?.();
-            } catch {}
-          }}
+          onToggleHidden={onToggleHidden}
+          onDelete={onDelete}
         />
       )}
+
       <div
         id={tag}
         className={cn(
@@ -104,51 +79,36 @@ export function MenuPositions({
           names.length === 0 || names[0] === "" ? "flex-row" : "flex-col"
         )}
       >
-        <div className="flex justify-between w-full gap-2">
-          <Title
-            title={localTitle}
-            isEdit={editing}
-            onChangeTitle={(v) => setLocalTitle(v)}
+        {editing && (
+          <MenuViewToggle
+            className="justify-end"
+            isDisabled={saving}
+            isTableView={localTableView}
+            onToggleTableView={() => setLocalTableView(true)}
+            onToggleColumnView={() => setLocalTableView(false)}
           />
-          {editing && (
-            <div className="flex gap-1">
-              <button
-                type="button"
-                disabled={saving}
-                onClick={() => setLocalTableView(true)}
-                className={cn(
-                  "px-3 py-1 border",
-                  localTableView && "bg-black text-white"
-                )}
-              >
-                Таблица
-              </button>
-              <button
-                type="button"
-                disabled={saving}
-                onClick={() => setLocalTableView(false)}
-                className={cn(
-                  "px-3 py-1 border",
-                  localTableView && "bg-black text-white"
-                )}
-              >
-                Колонки
-              </button>
-            </div>
-          )}
-        </div>
-        {localTableView ? (
-          editing ? (
-            <EditableTableView
-              names={localNames}
-              prices={localPrices}
-              setNames={setLocalNames}
-              setPrices={setLocalPrices}
-            />
-          ) : (
-            <PositionsTableView names={localNames} prices={localPrices} />
-          )
-        ) : (
+        )}
+
+        <Title
+          title={localTitle}
+          isEdit={editing}
+          onChangeTitle={(v) => setLocalTitle(v)}
+        />
+
+        {localTableView && editing && (
+          <EditableTableView
+            names={localNames}
+            prices={localPrices}
+            setNames={setLocalNames}
+            setPrices={setLocalPrices}
+          />
+        )}
+
+        {localTableView && !editing && (
+          <PositionsTableView names={localNames} prices={localPrices} />
+        )}
+
+        {!localTableView && (
           <PositionsColumns
             editable={editing}
             names={localNames}

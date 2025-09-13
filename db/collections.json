@@ -79,20 +79,6 @@
       "tableView": false
     },
     {
-      "tag": "new",
-      "title": "New section",
-      "isHidden": false,
-      "names": [
-        "first 2 ",
-        "first 3"
-      ],
-      "prices": [
-        "200",
-        ""
-      ],
-      "tableView": false
-    },
-    {
       "tag": "hello",
       "title": "hekko",
       "isHidden": false,
@@ -104,26 +90,6 @@
         "23",
         ""
       ],
-      "tableView": false
-    },
-    {
-      "tag": "qq",
-      "title": "sdssdsd",
-      "isHidden": false,
-      "names": [
-        ""
-      ],
-      "prices": [
-        "12"
-      ],
-      "tableView": false
-    },
-    {
-      "tag": "test",
-      "title": "sdsd",
-      "isHidden": false,
-      "names": [],
-      "prices": [],
       "tableView": false
     },
     {

@@ -28,7 +28,7 @@ export function PositionsColumns({
             )}
             {editable ? (
               <input
-                className="rounded border p-2 text-black flex-1"
+                className="rounded border p-2 text-black w-full"
                 value={value}
                 onChange={(e) => onChangeName?.(i, e.target.value)}
               />
