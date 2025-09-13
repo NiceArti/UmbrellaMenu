@@ -34,6 +34,7 @@ export async function PUT(req: NextRequest) {
     const body = await req.json();
     const {
       tag,
+      prevTag,
       title,
       names,
       prices,
@@ -146,9 +147,12 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json({ ok: true });
     }
 
-    const index = positions.findIndex(
-      (p: any) => (tag && p.tag === tag) || (!tag && title && p.title === title)
-    );
+    const index = positions.findIndex((p: any) => {
+      if (typeof prevTag === "string" && prevTag) return p.tag === prevTag;
+      if (typeof tag === "string" && tag) return p.tag === tag;
+      if (typeof title === "string" && title) return p.title === title;
+      return false;
+    });
     if (index === -1) {
       return NextResponse.json(
         { ok: false, error: "Раздел не найден" },
@@ -164,7 +168,20 @@ export async function PUT(req: NextRequest) {
       ...(typeof isHidden === "boolean" ? { isHidden } : {}),
       ...(Array.isArray(names) ? { names } : {}),
       ...(Array.isArray(prices) ? { prices } : {}),
+      ...(typeof tag === "string" && tag.trim() ? { tag } : {}),
     };
+    // If tag was changed, also update navigation entries that reference old tag
+    if (
+      typeof updated.tag === "string" &&
+      updated.tag.trim() &&
+      current?.tag &&
+      updated.tag !== current.tag &&
+      Array.isArray(data.navigation)
+    ) {
+      data.navigation = data.navigation.map((n: any) =>
+        n?.tag === current.tag ? { ...n, tag: updated.tag } : n
+      );
+    }
     positions[index] = updated;
     data.positions = positions;
 

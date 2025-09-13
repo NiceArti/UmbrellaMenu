@@ -18,6 +18,7 @@ export const useMenuEdit = ({
   isHidden?: boolean;
 }) => {
   const [editing, setEditing] = useState(false);
+  const [localTag, setLocalTag] = useState<string>(tag || "");
   const [localTitle, setLocalTitle] = useState<string>(title || "");
   const [localNames, setLocalNames] = useState<string[]>(names || []);
   const [localPrices, setLocalPrices] = useState<string[]>(prices || []);
@@ -30,6 +31,7 @@ export const useMenuEdit = ({
 
   const onEditClick = () => {
     setEditing(true);
+    setLocalTag(tag || "");
     setLocalTitle(title || "");
     setLocalNames(names || []);
     setLocalPrices(prices || []);
@@ -40,6 +42,7 @@ export const useMenuEdit = ({
 
   const onCancel = () => {
     setEditing(false);
+    setLocalTag(tag || "");
     setLocalTitle(title || "");
     setLocalNames(names || []);
     setLocalPrices(prices || []);
@@ -57,7 +60,8 @@ export const useMenuEdit = ({
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          tag,
+          prevTag: tag,
+          tag: localTag,
           title: localTitle,
           names: localNames,
           prices: localPrices,
@@ -114,6 +118,8 @@ export const useMenuEdit = ({
   };
 
   return {
+    localTag,
+    setLocalTag,
     localTitle,
     setLocalTitle,
     localNames,

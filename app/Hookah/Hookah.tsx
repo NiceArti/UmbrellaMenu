@@ -61,7 +61,7 @@ export default function Hookah({ data, isEditMode = false, onSaved }: Props) {
   };
 
   return (
-    <div className="w-full px-8 relative">
+    <div id="hookah" className="w-full px-8 relative">
       {isEditMode && (
         <EditToolbar
           className="absolute -top-10 right-8"

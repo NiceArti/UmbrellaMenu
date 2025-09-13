@@ -41,6 +41,8 @@ export function MenuPositions({
     onDelete,
     localTableView,
     setLocalTableView,
+    localTag,
+    setLocalTag,
     localTitle,
     setLocalTitle,
     localNames,
@@ -73,7 +75,7 @@ export function MenuPositions({
       )}
 
       <div
-        id={tag}
+        id={localTag || tag}
         className={cn(
           "flex flex-col gap-5 w-full h-auto",
           names.length === 0 || names[0] === "" ? "flex-row" : "flex-col",
@@ -87,6 +89,18 @@ export function MenuPositions({
             isTableView={localTableView}
             onToggleTableView={() => setLocalTableView(true)}
             onToggleColumnView={() => setLocalTableView(false)}
+          />
+        )}
+
+        {editing && (
+          <input
+            type="text"
+            placeholder="Тег секции"
+            className={cn(
+              "text-primary text-center font-bold !text-xl border px-2 h-10 bg-transparent w-full"
+            )}
+            value={localTag}
+            onChange={(e) => setLocalTag(e.target.value)}
           />
         )}
         <Title

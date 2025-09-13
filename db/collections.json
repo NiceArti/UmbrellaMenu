@@ -53,6 +53,18 @@
     {
       "tag": "hekkos",
       "text": "hekko"
+    },
+    {
+      "tag": "222",
+      "text": "222"
+    },
+    {
+      "tag": "44445",
+      "text": "444"
+    },
+    {
+      "tag": "soup",
+      "text": "Суп"
     }
   ],
   "positions": [
@@ -69,20 +81,22 @@
       "tableView": false
     },
     {
-      "tag": "section-1757750633235",
-      "title": "erfdewx",
+      "tag": "44445",
+      "title": "New section",
       "isHidden": false,
       "names": [
-        "sdsd",
-        "dsd",
-        "sdsdsd"
+        "qwerty",
+        "fdsdse",
+        "sqdqsdqsd",
+        "ytbtyvervre"
       ],
       "prices": [
-        "222",
         "",
-        "22"
+        "",
+        "655",
+        ""
       ],
-      "tableView": true
+      "tableView": false
     },
     {
       "tag": "222",
