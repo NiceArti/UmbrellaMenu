@@ -3,10 +3,11 @@ import { Header } from "@/widgets/header";
 import { Footer } from "@/widgets/footer";
 import { PageLayout } from "@/shared/ui";
 import { MenuPositions } from "@/widgets/menu-positions/menu-positions";
-import { readCollections } from "@/shared/utils/read-collections";
+import { readCollections } from "@/app/api/collections/helpers";
+import { ICollections } from "@/shared/types";
 
 export async function HomePage() {
-  const collections = await readCollections();
+  const collections = await readCollections() as ICollections;
   const navItems = collections.navigation || [];
   const positions = (collections.positions || []).filter((p) => !p.isHidden);
   return (
