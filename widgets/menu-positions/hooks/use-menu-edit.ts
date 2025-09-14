@@ -73,9 +73,15 @@ export const useMenuEdit = ({
           tableView: localTableView,
         }),
       });
-      const data = await res.json();
-      if (!res.ok || !data?.ok) {
-        setError(data?.error || "Не удалось сохранить");
+      // Safely parse JSON only when it is JSON and body is present
+      const ct = res.headers.get("content-type") || "";
+      let data: any = null;
+      if (ct.includes("application/json")) {
+        try { data = await res.json(); } catch {}
+      }
+      if (!res.ok || (data && data.ok === false)) {
+        const text = !data ? await res.text().catch(() => "") : "";
+        setError(data?.error || text || "Не удалось сохранить");
         return;
       }
       setSuccess("Сохранено");
@@ -102,8 +108,12 @@ export const useMenuEdit = ({
           isHidden,
         }),
       });
-      const data = await res.json();
-      if (!res.ok || !data?.ok) {
+      const ct = res.headers.get("content-type") || "";
+      let data: any = null;
+      if (ct.includes("application/json")) {
+        try { data = await res.json(); } catch {}
+      }
+      if (!res.ok || (data && data.ok === false)) {
         setLocalIsHidden(!isHidden);
         return;
       }
@@ -126,7 +136,11 @@ export const useMenuEdit = ({
           deletePosition: true,
         }),
       });
-      const data = await res.json?.();
+      const ct = res.headers.get("content-type") || "";
+      let data: any = null;
+      if (ct.includes("application/json")) {
+        try { data = await res.json(); } catch {}
+      }
       if (!res.ok || (data && data.ok === false)) return;
       onSaved?.();
     } catch {}

@@ -2,8 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { readCollections, saveCollections } from "./helpers";
 
+const ADMIN_COOKIE_NAME = "admin_auth";
 
-const ADMIN_COOKIE_NAME = 'admin_auth';
+// Ensure this route runs on the Node.js runtime (required for `redis` package) and is dynamic in prod
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export async function GET() {
   try {
@@ -11,9 +15,9 @@ export async function GET() {
     return new NextResponse(JSON.stringify(data), {
       status: 200,
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "no-store, no-cache, max-age=0, must-revalidate",
-        "Pragma": "no-cache",
+        Pragma: "no-cache",
         "CDN-Cache-Control": "no-store",
       },
     });
@@ -22,9 +26,9 @@ export async function GET() {
     return new NextResponse(JSON.stringify({ navigation: [], positions: [] }), {
       status: 200,
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "no-store, no-cache, max-age=0, must-revalidate",
-        "Pragma": "no-cache",
+        Pragma: "no-cache",
         "CDN-Cache-Control": "no-store",
       },
     });
