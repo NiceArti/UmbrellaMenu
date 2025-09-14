@@ -52,7 +52,7 @@
   * {
     @apply border-border;
   }
-  
+
   body {
     @apply bg-black font-sans text-primary text-sm font-normal text-white;
     transition: all 0.5s ease-in-out;
@@ -64,35 +64,54 @@
   }
 }
 
-
+@layer utilities {
+  .drag-ghost-dark {
+    background: #1b1b1b;
+  }
+  .drag-chosen {
+    background: #1b1b1b;
+  }
+}
 
 @layer utilities {
-    .bg-stone-texture {
-        background-image: linear-gradient(180deg, #000000d8 0%, #000000d8 100%), url('../shared/images/stone-bg.png');
-        background-size: 100%;
-        background-repeat: repeat-y;
-    }
+  .bg-stone-texture {
+    background-image: linear-gradient(180deg, #000000d8 0%, #000000d8 100%),
+      url("../shared/images/stone-bg.png");
+    background-size: 100%;
+    background-repeat: repeat-y;
+  }
 
-    .title {
-      color: #FF0000;
-      text-transform: uppercase;
-      text-shadow: -3px 0 #860000;
-    }
+  .title {
+    color: #ff0000;
+    text-transform: uppercase;
+    text-shadow: -3px 0 #860000;
+  }
 
-    .blink {
-      animation: blink-animation 1.5s;
-      animation-fill-mode: both;
-    }
-    
-    @keyframes blink-animation {
-      0% { background: none; }
-      50% { background: lightgray; }
-      100% { background: none; }
-    }
-    @-webkit-keyframes blink-animation {
-      0% { background: none; }
-      50% { background: lightgray; }
-      100% { background: none; }
-    }
+  .blink {
+    animation: blink-animation 1.5s;
+    animation-fill-mode: both;
+  }
 
+  @keyframes blink-animation {
+    0% {
+      background: none;
+    }
+    50% {
+      background: lightgray;
+    }
+    100% {
+      background: none;
+    }
+  }
+  @-webkit-keyframes blink-animation {
+    0% {
+      background: none;
+    }
+    50% {
+      background: lightgray;
+    }
+    100% {
+      background: none;
+    }
+  }
 }
