@@ -44,8 +44,18 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ navigation: localItems }),
       });
-      const data = await res.json();
-      if (!res.ok || !data?.ok) return;
+      const ct = res.headers.get("content-type") || "";
+      let data: unknown = null;
+      if (ct.includes("application/json")) {
+        try {
+          data = await res.json();
+        } catch {}
+      }
+      if (!res.ok || (data && (data as { ok: boolean }).ok === false)) {
+        // Optional: read text for debugging
+        // const text = !data ? await res.text().catch(() => "") : "";
+        return;
+      }
       setEditing(false);
       onSaved?.();
     } finally {
@@ -170,11 +180,19 @@ export function NavButtonGroup({ items, isEditMode = false, onSaved }: Props) {
                     tag: n.tag,
                     text: n.text,
                   }));
-                  await fetch("/api/collections", {
+                  const res = await fetch("/api/collections", {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ navigation: sanitized }),
                   });
+                  const ct = res.headers.get("content-type") || "";
+                  let data: any = null;
+                  if (ct.includes("application/json")) {
+                    try {
+                      data = await res.json();
+                    } catch {}
+                  }
+                  // No hard failure on non-JSON/empty body
                 } catch (e) {
                   console.error("Failed to persist navigation order", e);
                 } finally {
