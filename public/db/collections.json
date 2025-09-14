@@ -23,8 +23,16 @@
   },
   "navigation": [
     {
+      "tag": "snack",
+      "text": "Снеки"
+    },
+    {
       "tag": "hekkos",
       "text": "hekko"
+    },
+    {
+      "tag": "lemonade",
+      "text": "Лимонады"
     },
     {
       "tag": "beer",
@@ -33,14 +41,6 @@
     {
       "tag": "milkshake",
       "text": "Милкшейки"
-    },
-    {
-      "tag": "snack",
-      "text": "Снеки"
-    },
-    {
-      "tag": "lemonade",
-      "text": "Лимонады"
     },
     {
       "tag": "coffee",
@@ -56,6 +56,19 @@
     }
   ],
   "positions": [
+    {
+      "id": 7,
+      "tag": "12",
+      "title": "sdsd",
+      "isHidden": true,
+      "names": [
+        "sdsd"
+      ],
+      "prices": [
+        "22"
+      ],
+      "tableView": false
+    },
     {
       "id": 2,
       "tag": "cooled-drinks",

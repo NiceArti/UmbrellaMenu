@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { promises as fs } from "fs";
-import path from "path";
 import { cookies } from "next/headers";
 import { ADMIN_COOKIE_NAME } from "@/shared/constants/constants";
+import { getCollectionsPath } from "@/shared/utils/get-collections-path";
 
 export const runtime = "nodejs";
 
 export async function GET() {
   try {
-    const filePath = path.join(process.cwd(), "db", "collections.json");
+    const filePath = getCollectionsPath();
     const raw = await fs.readFile(filePath, "utf8");
     const data = JSON.parse(raw);
     return NextResponse.json(data);
@@ -46,7 +46,7 @@ export async function PUT(req: NextRequest) {
       positions: positionsPayload,
     } = body || {};
 
-    const filePath = path.join(process.cwd(), "db", "collections.json");
+    const filePath = getCollectionsPath();
     const raw = await fs.readFile(filePath, "utf8");
     const data = JSON.parse(raw);
 

@@ -13,7 +13,7 @@ type HeaderProps = {
 export function Header({ items, title, isEditMode, onSaved }: HeaderProps) {
   return (
     <div className="flex flex-col gap-1 justify-between relative w-full h-auto">
-      <MenuWithBg title={title} />
+      <MenuWithBg title={title} isEditMode={isEditMode} />
       <NavButtonGroup items={items} isEditMode={isEditMode} onSaved={onSaved} />
     </div>
   );
