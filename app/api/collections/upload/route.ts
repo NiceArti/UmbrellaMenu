@@ -1,14 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { promises as fs } from "fs";
 import { cookies } from "next/headers";
 import { ADMIN_COOKIE_NAME } from "@/shared/constants/constants";
-import { getCollectionsPath } from "@/shared/utils/get-collections-path";
 import { validateCollections } from "@/shared/utils/validate-collections";
-
-export const runtime = "nodejs";
+import { saveCollections } from "../helpers";
 
 export async function POST(req: NextRequest) {
   try {
+    // auth
     const cookieStore = cookies();
     const isAuth = cookieStore.get(ADMIN_COOKIE_NAME)?.value;
     if (!isAuth) {
@@ -18,8 +16,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // body (ожидаем application/json)
     const body = await req.json();
 
+    // валидация
     const validation = validateCollections(body);
     if (!validation.ok) {
       return NextResponse.json(
@@ -28,11 +28,21 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const filePath = getCollectionsPath();
-    await fs.writeFile(filePath, JSON.stringify(body, null, 2), "utf8");
+    // (опционально) бэкап предыдущей версии
+    // const prev = await readData();
 
-    return NextResponse.json({ ok: true });
+    // запись в Redis
+    await saveCollections(body);
+
+    return NextResponse.json({ ok: true }, {
+      headers: {
+        // POST-ответ не кешируем
+        "Cache-Control": "no-store, no-cache, max-age=0, must-revalidate",
+        "Pragma": "no-cache",
+      },
+    });
   } catch (e) {
+    console.error("UPLOAD collections error:", e);
     return NextResponse.json(
       { ok: false, error: "Ошибка при загрузке файла" },
       { status: 500 }
