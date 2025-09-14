@@ -1,22 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
-import { promises as fs } from "fs";
 import { cookies } from "next/headers";
-import { ADMIN_COOKIE_NAME } from "@/shared/constants/constants";
-import { getCollectionsPath } from "@/shared/utils/get-collections-path";
+import { readCollections, saveCollections } from "./helpers";
 
-export const runtime = "nodejs";
+
+const ADMIN_COOKIE_NAME = 'admin_auth';
 
 export async function GET() {
   try {
-    const filePath = getCollectionsPath();
-    const raw = await fs.readFile(filePath, "utf8");
-    const data = JSON.parse(raw);
-    return NextResponse.json(data);
+    const data = await readCollections();
+    return new NextResponse(JSON.stringify(data), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store, no-cache, max-age=0, must-revalidate",
+        "Pragma": "no-cache",
+        "CDN-Cache-Control": "no-store",
+      },
+    });
   } catch (e) {
-    return NextResponse.json(
-      { navigation: [], positions: [] },
-      { status: 200 }
-    );
+    console.error("GET collections error:", e);
+    return new NextResponse(JSON.stringify({ navigation: [], positions: [] }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store, no-cache, max-age=0, must-revalidate",
+        "Pragma": "no-cache",
+        "CDN-Cache-Control": "no-store",
+      },
+    });
   }
 }
 
@@ -46,9 +57,7 @@ export async function PUT(req: NextRequest) {
       positions: positionsPayload,
     } = body || {};
 
-    const filePath = getCollectionsPath();
-    const raw = await fs.readFile(filePath, "utf8");
-    const data = JSON.parse(raw);
+    const data = await readCollections();
 
     if (Array.isArray(navigation)) {
       const sanitized = navigation
@@ -58,7 +67,7 @@ export async function PUT(req: NextRequest) {
           text: typeof n.text === "string" ? n.text : "",
         }));
       data.navigation = sanitized;
-      await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
+      await saveCollections(data);
       return NextResponse.json({ ok: true, data: sanitized });
     }
 
@@ -78,7 +87,7 @@ export async function PUT(req: NextRequest) {
             : {}),
         }));
       data.positions = sanitized;
-      await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
+      await saveCollections(data);
       return NextResponse.json({ ok: true, data: sanitized });
     }
 
@@ -114,7 +123,7 @@ export async function PUT(req: NextRequest) {
 
       positions.unshift(sanitizedNew);
       data.positions = positions;
-      await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
+      await saveCollections(data);
       return NextResponse.json({ ok: true, data: sanitizedNew });
     }
 
@@ -147,7 +156,7 @@ export async function PUT(req: NextRequest) {
           : [],
       } as any;
       data.hookah = sanitized;
-      await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
+      await saveCollections(data);
       return NextResponse.json({ ok: true, data: sanitized });
     }
 
@@ -166,7 +175,7 @@ export async function PUT(req: NextRequest) {
       }
       positions.splice(delIndex, 1);
       data.positions = positions;
-      await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
+      await saveCollections(data);
       return NextResponse.json({ ok: true });
     }
 
@@ -208,7 +217,7 @@ export async function PUT(req: NextRequest) {
     positions[index] = updated;
     data.positions = positions;
 
-    await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
+    await saveCollections(data);
 
     return NextResponse.json({ ok: true, data: updated });
   } catch (e) {

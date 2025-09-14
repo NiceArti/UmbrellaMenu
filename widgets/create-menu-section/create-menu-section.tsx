@@ -83,6 +83,7 @@ export function CreateMenuSection({ onSaved }: { onSaved: () => void }) {
                   setCreating(true);
                   const collections = await fetch("/api/collections", {
                     method: "GET",
+                    cache: "no-store",
                   });
                   const collectionsData = await collections.json();
                   const nextId = collectionsData.positions.length + 1;
