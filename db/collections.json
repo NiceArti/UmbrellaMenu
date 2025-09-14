@@ -57,22 +57,6 @@
   ],
   "positions": [
     {
-      "id": 3,
-      "tag": "beer",
-      "title": "Пиво",
-      "isHidden": false,
-      "names": [
-        "Белый кролик",
-        "Два Бобра",
-        "Червонный валет"
-      ],
-      "prices": [
-        "250",
-        "250",
-        "300"
-      ]
-    },
-    {
       "id": 2,
       "tag": "cooled-drinks",
       "title": "Холодные напитки",
@@ -95,6 +79,22 @@
       ]
     },
     {
+      "id": 3,
+      "tag": "beer",
+      "title": "Пиво",
+      "isHidden": false,
+      "names": [
+        "Белый кролик",
+        "Два Бобра",
+        "Червонный валет"
+      ],
+      "prices": [
+        "250",
+        "250",
+        "300"
+      ]
+    },
+    {
       "id": 4,
       "tag": "soup",
       "title": "Суп",
@@ -104,19 +104,6 @@
       ],
       "prices": [
         "22"
-      ],
-      "tableView": false
-    },
-    {
-      "id": 6,
-      "tag": "qwerty",
-      "title": "Распродажа",
-      "isHidden": false,
-      "names": [
-        "Первый"
-      ],
-      "prices": [
-        "228"
       ],
       "tableView": false
     },
@@ -135,6 +122,19 @@
         "100",
         "350"
       ]
+    },
+    {
+      "id": 6,
+      "tag": "qwerty",
+      "title": "Распродажа",
+      "isHidden": false,
+      "names": [
+        "Первый"
+      ],
+      "prices": [
+        "228"
+      ],
+      "tableView": false
     },
     {
       "id": 5,

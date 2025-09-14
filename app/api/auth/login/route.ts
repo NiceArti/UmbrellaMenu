@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { isValidPassword, isValidLogin, sha256Hex } from "@/shared/utils/auth";
+import { isValidPassword, isValidLogin } from "@/shared/utils/auth";
 import {
   ADMIN_COOKIE_MAX_AGE,
   ADMIN_COOKIE_NAME,
@@ -10,7 +10,7 @@ export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
   try {
-    const passwordHash = sha256Hex(ADMIN_PASSWORD as string);
+    const passwordHash = ADMIN_PASSWORD;
     if (!passwordHash) {
       return NextResponse.json(
         { ok: false, error: "Сервер не настроен" },

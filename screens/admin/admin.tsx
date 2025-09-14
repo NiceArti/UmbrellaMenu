@@ -82,8 +82,6 @@ export function AdminPage({ authenticated }: { authenticated: boolean }) {
         // Optimistic UI update
         setLocalPositions(next);
 
-        console.log(next);
-
         // Persist to server: send full array
         try {
           const sanitized = next.map((p) => ({
@@ -95,7 +93,6 @@ export function AdminPage({ authenticated }: { authenticated: boolean }) {
             prices: p.prices,
             tableView: p.tableView,
           }));
-          console.log("[positions] PUT /api/collections payload:", sanitized);
           const res = await fetch("/api/collections", {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -104,8 +101,6 @@ export function AdminPage({ authenticated }: { authenticated: boolean }) {
           if (!res.ok) {
             const text = await res.text().catch(() => "<no body>");
             console.error("[positions] save failed:", res.status, text);
-          } else {
-            console.log("[positions] save ok");
           }
         } catch (e) {
           console.error("Failed to persist positions order", e);
