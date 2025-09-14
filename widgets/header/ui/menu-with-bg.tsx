@@ -6,6 +6,9 @@ import {
   COLLECTIONS_FILE_NAME,
   COLLECTIONS_FILE_PATH,
 } from "@/shared/constants";
+import { UploadFileButton } from "@/widgets/upload-file-modal/upload-file-button";
+import { useState } from "react";
+import { UploadFileModal } from "@/widgets/upload-file-modal/upload-file-modal";
 
 export function MenuWithBg({
   title = "Меню",
@@ -14,7 +17,9 @@ export function MenuWithBg({
   title?: string;
   isEditMode?: boolean;
 }) {
-  const { downloadFile, isLoading, isError } = useDownloadFile();
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
+
+  const { downloadFile, isLoading } = useDownloadFile();
 
   return (
     <div className="relative w-full">
@@ -32,14 +37,21 @@ export function MenuWithBg({
         {title}
       </h1>
       {isEditMode && (
-        <CollectionsButton
-          onClick={() =>
-            downloadFile(COLLECTIONS_FILE_PATH, COLLECTIONS_FILE_NAME)
-          }
-          isLoading={isLoading}
-          isError={isError}
-        />
+        <div className="absolute bottom-[11%] left-1/2 -translate-x-1/2 flex gap-4 md:gap-10">
+          <CollectionsButton
+            onClick={() =>
+              downloadFile(COLLECTIONS_FILE_PATH, COLLECTIONS_FILE_NAME)
+            }
+            isLoading={isLoading}
+            text="Скачать JSON"
+          />
+          <UploadFileButton onClick={() => setIsUploadModalOpen(true)} />
+        </div>
       )}
+      <UploadFileModal
+        onClose={() => setIsUploadModalOpen(false)}
+        isOpen={isUploadModalOpen}
+      />
     </div>
   );
 }

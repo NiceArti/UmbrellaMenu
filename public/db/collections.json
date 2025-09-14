@@ -57,19 +57,6 @@
   ],
   "positions": [
     {
-      "id": 7,
-      "tag": "12",
-      "title": "sdsd",
-      "isHidden": true,
-      "names": [
-        "sdsd"
-      ],
-      "prices": [
-        "22"
-      ],
-      "tableView": false
-    },
-    {
       "id": 2,
       "tag": "cooled-drinks",
       "title": "Холодные напитки",
@@ -108,12 +95,12 @@
       ]
     },
     {
-      "id": 4,
-      "tag": "soup",
-      "title": "Суп",
-      "isHidden": false,
+      "id": 7,
+      "tag": "12",
+      "title": "Успех",
+      "isHidden": true,
       "names": [
-        ""
+        "TEST"
       ],
       "prices": [
         "22"
@@ -135,6 +122,19 @@
         "100",
         "350"
       ]
+    },
+    {
+      "id": 4,
+      "tag": "soup",
+      "title": "Суп",
+      "isHidden": false,
+      "names": [
+        ""
+      ],
+      "prices": [
+        "22"
+      ],
+      "tableView": false
     },
     {
       "id": 6,
