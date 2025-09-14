@@ -108,6 +108,7 @@ export function MenuPositions({
           title={localTitle}
           isEdit={editing}
           onChangeTitle={(v) => setLocalTitle(v)}
+          className="whitespace-nowrap"
         />
         {localTableView && editing && (
           <EditableTableView
