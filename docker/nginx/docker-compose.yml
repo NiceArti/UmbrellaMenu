@@ -1,0 +1,33 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ../../nginx/conf.d:/etc/nginx/conf.d
+      - ../../certbot/www:/var/www/certbot
+      - ../../certbot/conf:/etc/letsencrypt
+    networks:
+      - umbrella_shared_network
+    restart: always
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ../../certbot/www:/var/www/certbot
+      - ../../certbot/conf:/etc/letsencrypt
+    entrypoint: "/bin/sh -c"
+    command: >
+      "trap exit TERM; while :; do sleep 12h & wait $${!};
+      certbot renew --webroot -w /var/www/certbot --deploy-hook 'docker restart nginx_proxy';
+      done"
+    networks:
+      - umbrella_shared_network
+    restart: always
+
+networks:
+  umbrella_shared_network:
+    external: true

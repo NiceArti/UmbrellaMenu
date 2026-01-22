@@ -1,0 +1,32 @@
+# Documentation
+README.md
+
+# ENV
+.env.example
+
+# Format
+.prettierrc
+.eslintrc.js
+
+# Docker
+docker-compose.yml
+Dockerfile
+
+# Git
+.git
+.github
+.gitignore
+
+# Node
+node_modules
+.nvmrc
+.npmrc
+
+# Nest
+nest-cli.json
+
+# configs
+components.json
+
+# Next.js
+.next

@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  umbrella:
+    container_name: umbrella_interface
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+    restart: on-failure
+    ports:
+      - "90:3000"
