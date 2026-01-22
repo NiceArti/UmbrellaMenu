@@ -102,8 +102,12 @@ export function CreateMenuSection({ onSaved }: { onSaved: () => void }) {
                       },
                     }),
                   });
-                  const data = await res.json();
-                  if (!res.ok || !data?.ok) return;
+                  const ct = res.headers.get("content-type") || "";
+                  let data: any = null;
+                  if (ct.includes("application/json")) {
+                    try { data = await res.json(); } catch {}
+                  }
+                  if (!res.ok || (data && data.ok === false)) return;
                   setAdding(false);
                   setNewTag("");
                   setNewTitle("");

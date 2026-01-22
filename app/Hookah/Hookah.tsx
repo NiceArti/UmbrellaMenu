@@ -51,8 +51,14 @@ export default function Hookah({ data, isEditMode = false, onSaved }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ hookah: local }),
       });
-      const json = await res.json();
-      if (!res.ok || !json?.ok) return;
+      const ct = res.headers.get("content-type") || "";
+      let json: any = null;
+      if (ct.includes("application/json")) {
+        try {
+          json = await res.json();
+        } catch {}
+      }
+      if (!res.ok || (json && json.ok === false)) return;
       setEditing(false);
       onSaved?.();
     } finally {

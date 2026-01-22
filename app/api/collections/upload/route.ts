@@ -4,6 +4,9 @@ import { ADMIN_COOKIE_NAME } from "@/shared/constants/constants";
 import { validateCollections } from "@/shared/utils/validate-collections";
 import { saveCollections } from "../helpers";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   try {
     // auth

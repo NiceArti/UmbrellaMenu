@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { readCollections } from "../helpers";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     const data = await readCollections(); // { navigation: [], positions: [], ... }
@@ -17,7 +20,7 @@ export async function GET() {
         "Content-Length": contentLength,
         // запретить кеш любых прокси/браузеров
         "Cache-Control": "no-store, no-cache, max-age=0, must-revalidate",
-        "Pragma": "no-cache",
+        Pragma: "no-cache",
         "CDN-Cache-Control": "no-store",
         "Surrogate-Control": "no-store",
         "X-Content-Type-Options": "nosniff",
